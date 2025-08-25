@@ -2355,21 +2355,18 @@
                 console.log('=== CREATING CHARTS (HYBRID APPROACH) ===');
                 
                 // Try to get source data first
-                let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Total'];
+                let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July'];
+                let marginMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Total'];
                 let revenueData = [141764, 115153, 144090, 147081, 81394, 138129, 165652];
                 let expensesData = [129294, 105456, 114677, 94163, 129992, 108666, 106078];
                 let margin2025Data = [8.8, 8.4, 20.4, 36.0, -59.7, 21.3, 36.0];
                 let margin2024Data = [5.0, -10.2, -58.0, -8.3, -11.3, -0.7, -42.9]; // Updated March to -58%
                 
-                // Calculate totals and add them to the data arrays
-                const totalRevenue = revenueData.reduce((sum, val) => sum + val, 0);
-                const totalExpenses = expensesData.reduce((sum, val) => sum + val, 0);
+                // Calculate totals and add them to the margin data arrays only
                 const totalMargin2025 = margin2025Data.reduce((sum, val) => sum + val, 0) / margin2025Data.length; // Average for 2025
                 const totalMargin2024 = margin2024Data.reduce((sum, val) => sum + val, 0) / margin2024Data.length; // Average for 2024
                 
-                // Add totals to the data arrays
-                revenueData.push(totalRevenue);
-                expensesData.push(totalExpenses);
+                // Add totals to the margin data arrays only
                 margin2025Data.push(totalMargin2025);
                 margin2024Data.push(totalMargin2024);
                 
@@ -2478,7 +2475,7 @@
                         const marginChart = new Chart(marginCtx.getContext('2d'), {
                             type: 'bar',
                             data: {
-                                labels: months,
+                                labels: marginMonths,
                                 datasets: [
                                     {
                                         label: '2025 Margin',
