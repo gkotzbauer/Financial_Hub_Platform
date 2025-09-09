@@ -2624,8 +2624,8 @@
                             return;
                         }
                         
-                        const val2024 = parseFloat(row.Value_2024_Jan_June) || 0;
-                        const val2025 = parseFloat(row.Value_2025_Jan_June) || 0;
+                        const val2024 = parseFloat(row.Value_2024_Jan_July) || 0;
+                        const val2025 = parseFloat(row.Value_2025_Jan_July) || 0;
                         let growth = parseFloat(row.Growth_Rate_Decimal) || 0;
                         
                         // Special handling for Profit per Visit: if prior year is negative and current year is positive,
@@ -2657,22 +2657,22 @@
                             
                             // Map the data based on metric name
                             if (row.Metric_Name.includes('Visit Average')) {
-                                cashflowItem.visitAvg = parseFloat(row.Value_2024_Jan_June) || 0;
+                                cashflowItem.visitAvg = parseFloat(row.Value_2024_Jan_July) || 0;
                                 console.log(`Set visitAvg for ${month}: ${cashflowItem.visitAvg}`);
                             } else if (row.Metric_Name.includes('Visit Projection')) {
-                                cashflowItem.visitProj = parseFloat(row.Value_2025_Jan_June) || 0;
+                                cashflowItem.visitProj = parseFloat(row.Value_2025_Jan_July) || 0;
                                 console.log(`Set visitProj for ${month}: ${cashflowItem.visitProj}`);
                             } else if (row.Metric_Name.includes('Expected Expenses')) {
-                                cashflowItem.expenses = parseFloat(row.Value_2025_Jan_June) || 0;
+                                cashflowItem.expenses = parseFloat(row.Value_2025_Jan_July) || 0;
                                 console.log(`Set expenses for ${month}: ${cashflowItem.expenses}`);
                             } else if (row.Metric_Name.includes('Expected Revenue')) {
-                                cashflowItem.revenue = parseFloat(row.Value_2025_Jan_June) || 0;
+                                cashflowItem.revenue = parseFloat(row.Value_2025_Jan_July) || 0;
                                 console.log(`Set revenue for ${month}: ${cashflowItem.revenue}`);
                             } else if (row.Metric_Name.includes('Expected Profit')) {
-                                cashflowItem.profit = parseFloat(row.Value_2025_Jan_June) || 0;
+                                cashflowItem.profit = parseFloat(row.Value_2025_Jan_July) || 0;
                                 console.log(`Set profit for ${month}: ${cashflowItem.profit}`);
                             } else if (row.Metric_Name.includes('Cash Position')) {
-                                cashflowItem.cashPosition = parseFloat(row.Value_2025_Jan_June) || 0;
+                                cashflowItem.cashPosition = parseFloat(row.Value_2025_Jan_July) || 0;
                                 console.log(`Set cashPosition for ${month}: ${cashflowItem.cashPosition}`);
                             }
                         } else {
