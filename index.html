@@ -2792,13 +2792,13 @@
                             </span>
                         </td>
                         <td style="padding: 12px 4px 12px 12px; text-align: right; font-size: 0.9rem; color: #2d3748;">
-                            ${item.title === 'Visit Count' ? 
+                            ${item.title === 'Visit Count' || item.title === 'Private Visit Count' ? 
                                 this.formatVisitCount(item.val2024) : 
                                 this.formatCurrency(item.val2024)
                             }
                         </td>
                         <td style="padding: 12px 4px 12px 4px; text-align: right; font-size: 0.9rem; color: #2d3748;">
-                            ${item.title === 'Visit Count' ? 
+                            ${item.title === 'Visit Count' || item.title === 'Private Visit Count' ? 
                                 this.formatVisitCount(item.val2025) : 
                                 this.formatCurrency(item.val2025)
                             }
