@@ -170,6 +170,16 @@
     "Growth_Rate_Percentage": null
   },
   {
+    "Metric_ID": "VISIT_STATUS_JULY",
+    "Metric_Name": "July 2025 End of Month Visit Status",
+    "Category": "Remaining Year Cashflow Projections",
+    "Responsibility": "Forecast",
+    "Value_2024_Jan_June": null,
+    "Value_2025_Jan_June": -99.57785482318863,
+    "Growth_Rate_Decimal": null,
+    "Growth_Rate_Percentage": null
+  },
+  {
     "Metric_ID": "CASHFLOW_JULY_CASH_POSITION",
     "Metric_Name": "July 2025 End of Month Cash Position",
     "Category": "Remaining Year Cashflow Projections",
