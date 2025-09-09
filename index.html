@@ -2730,22 +2730,31 @@
             },
 
             // Format absolute difference between 2025 and 2024 values
-            formatAbsoluteDifference: function(val2025, val2024) {
+            formatAbsoluteDifference: function(val2025, val2024, title) {
                 const difference = val2025 - val2024;
                 const isPositive = difference >= 0;
                 const color = isPositive ? '#38a169' : '#e53e3e';
                 
+                // Check if this is a count metric (not currency)
+                const isCountMetric = title === 'Visit Count' || title === 'Private Visit Count';
+                
                 // Handle different data types (currency vs count)
                 if (typeof val2025 === 'number' && typeof val2024 === 'number') {
-                    if (Math.abs(difference) >= 1000000) {
-                        return `<span style="color: ${color};">$${Math.round(difference / 1000000)}M</span>`;
-                    } else if (Math.abs(difference) >= 1000) {
-                        return `<span style="color: ${color};">$${Math.round(difference / 1000)}K</span>`;
+                    if (isCountMetric) {
+                        // For count metrics, show the actual difference as a number
+                        return `<span style="color: ${color};">${Math.round(difference)}</span>`;
                     } else {
-                        return `<span style="color: ${color};">$${Math.round(difference)}</span>`;
+                        // For currency metrics, format with $ signs
+                        if (Math.abs(difference) >= 1000000) {
+                            return `<span style="color: ${color};">$${Math.round(difference / 1000000)}M</span>`;
+                        } else if (Math.abs(difference) >= 1000) {
+                            return `<span style="color: ${color};">$${Math.round(difference / 1000)}K</span>`;
+                        } else {
+                            return `<span style="color: ${color};">$${Math.round(difference)}</span>`;
+                        }
                     }
                 } else {
-                    // For non-numeric values (like visit count), just show the difference
+                    // For non-numeric values, just show the difference
                     return `<span style="color: ${color};">${difference}</span>`;
                 }
             },
@@ -2807,7 +2816,7 @@
                             ${this.formatGrowth(item.growth)}
                         </td>
                         <td style="padding: 6px 4px; text-align: right; font-size: 0.9rem; color: #2d3748;">
-                            ${this.formatAbsoluteDifference(item.val2025, item.val2024)}
+                            ${this.formatAbsoluteDifference(item.val2025, item.val2024, item.title)}
                         </td>
                     `;
                     tbody.appendChild(row);
