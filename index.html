@@ -2619,6 +2619,11 @@
                     console.log(`Processing row: Category="${row.Category}", Metric_Name="${row.Metric_Name}"`);
                     
                     if (row.Category === 'YOY Expense & Profitability Analysis') {
+                        // Skip the "Visits to Goal" metric
+                        if (row.Metric_Name === 'Visits to Goal') {
+                            return;
+                        }
+                        
                         const val2024 = parseFloat(row.Value_2024_Jan_June) || 0;
                         const val2025 = parseFloat(row.Value_2025_Jan_June) || 0;
                         let growth = parseFloat(row.Growth_Rate_Decimal) || 0;
