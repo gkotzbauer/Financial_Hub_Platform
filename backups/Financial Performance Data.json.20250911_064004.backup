@@ -65,35 +65,15 @@
     "Category": "YOY Expense & Profitability Analysis",
     "Responsibility": "Owner Controlled",
     "Value_2024_Jan_July": 56914.0,
-    "Value_2025_Jan_July": 66195.0,
-    "Growth_Rate_Decimal": 0.16307059774396457,
+    "Value_2025_Jan_July": 64665.48,
+    "Growth_Rate_Decimal": 0.13619636644762279,
     "Growth_Rate_Percentage": 14.0
-  },
-  {
-    "Metric_ID": "MARKETING_ROI",
-    "Metric_Name": "Marketing ROI (1$ Earned\u2026)",
-    "Category": "YOY Expense & Profitability Analysis",
-    "Responsibility": "Owner Controlled",
-    "Value_2024_Jan_July": 11.109234986119409,
-    "Value_2025_Jan_July": 14.00510612584032,
-    "Growth_Rate_Decimal": 0.26067241743821234,
-    "Growth_Rate_Percentage": 26.0
-  },
-  {
-    "Metric_ID": "MARKETING_EFFICIENCY",
-    "Metric_Name": "Marketing Efficiency (# of visits per dollar)",
-    "Category": "YOY Expense & Profitability Analysis",
-    "Responsibility": "Owner Controlled",
-    "Value_2024_Jan_July": 0.11004322310854975,
-    "Value_2025_Jan_July": 0.1193745751189667,
-    "Growth_Rate_Decimal": 0.08479715285340413,
-    "Growth_Rate_Percentage": 9.0
   },
   {
     "Metric_ID": "REVENUE_PROPORTIONAL",
     "Metric_Name": "Revenue Proportional",
     "Category": "YOY Expense & Profitability Analysis",
-    "Responsibility": "AFC / Vendor Payments",
+    "Responsibility": "AFC / RCM Payments",
     "Value_2024_Jan_July": 70417.0,
     "Value_2025_Jan_July": 84980.0,
     "Growth_Rate_Decimal": 0.20681085533322918,
