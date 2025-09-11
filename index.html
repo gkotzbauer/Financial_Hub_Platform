@@ -2720,6 +2720,19 @@
                 }
             },
 
+            // Format currency values with two decimal places for small values
+            formatCurrencyWithDecimals: function(value) {
+                if (Math.abs(value) >= 1000000) {
+                    return `$${Math.round(value / 1000000)}M`;
+                } else if (Math.abs(value) >= 1000) {
+                    return `$${Math.round(value / 1000)}K`;
+                } else if (Math.abs(value) < 100) {
+                    return `$${value.toFixed(2)}`;
+                } else {
+                    return `$${Math.round(value)}`;
+                }
+            },
+
             // Format visit count values
             formatVisitCount: function(value) {
                 return Math.round(value).toString();
@@ -2748,6 +2761,10 @@
                 // Check if this is a count metric (not currency)
                 const isCountMetric = title === 'Visit Count' || title === 'Private Visit Count';
                 const isPercentageMetric = title === 'Payroll to Revenue Ratio';
+                const isDecimalMetric = title === 'Marketing ROI (1$ Earned…)' || 
+                                      title === 'Marketing Efficiency (# of visits per dollar)' || 
+                                      title === 'Supply $ per Visit' || 
+                                      title === 'Profit per Visit';
                 
                 // Handle different data types (currency vs count vs percentage)
                 if (typeof val2025 === 'number' && typeof val2024 === 'number') {
@@ -2757,6 +2774,17 @@
                     } else if (isPercentageMetric) {
                         // For percentage metrics, show the difference as a percentage
                         return `<span style="color: ${color};">${Math.round(difference * 100)}%</span>`;
+                    } else if (isDecimalMetric) {
+                        // For decimal metrics, show two decimal places for small values
+                        if (Math.abs(difference) >= 1000000) {
+                            return `<span style="color: ${color};">$${Math.round(difference / 1000000)}M</span>`;
+                        } else if (Math.abs(difference) >= 1000) {
+                            return `<span style="color: ${color};">$${Math.round(difference / 1000)}K</span>`;
+                        } else if (Math.abs(difference) < 100) {
+                            return `<span style="color: ${color};">$${difference.toFixed(2)}</span>`;
+                        } else {
+                            return `<span style="color: ${color};">$${Math.round(difference)}</span>`;
+                        }
                     } else {
                         // For currency metrics, format with $ signs
                         if (Math.abs(difference) >= 1000000) {
@@ -2819,6 +2847,11 @@
                                 this.formatVisitCount(item.val2024) : 
                                 item.title === 'Payroll to Revenue Ratio' ?
                                 this.formatPercentage(item.val2024) :
+                                (item.title === 'Marketing ROI (1$ Earned…)' || 
+                                 item.title === 'Marketing Efficiency (# of visits per dollar)' || 
+                                 item.title === 'Supply $ per Visit' || 
+                                 item.title === 'Profit per Visit') ?
+                                this.formatCurrencyWithDecimals(item.val2024) :
                                 this.formatCurrency(item.val2024)
                             }
                         </td>
@@ -2827,6 +2860,11 @@
                                 this.formatVisitCount(item.val2025) : 
                                 item.title === 'Payroll to Revenue Ratio' ?
                                 this.formatPercentage(item.val2025) :
+                                (item.title === 'Marketing ROI (1$ Earned…)' || 
+                                 item.title === 'Marketing Efficiency (# of visits per dollar)' || 
+                                 item.title === 'Supply $ per Visit' || 
+                                 item.title === 'Profit per Visit') ?
+                                this.formatCurrencyWithDecimals(item.val2025) :
                                 this.formatCurrency(item.val2025)
                             }
                         </td>
