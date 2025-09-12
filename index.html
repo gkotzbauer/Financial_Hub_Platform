@@ -2830,52 +2830,106 @@
                 const tbody = document.querySelector('#expenseAnalysisTable tbody');
                 tbody.innerHTML = '';
 
+                // Define metric groups
+                const metricGroups = {
+                    'Revenue & Visits': ['TOTAL_REVENUE', 'VISIT_COUNT', 'PRIVATE_VISIT_COUNT'],
+                    'Expenses': ['TOTAL_EXPENSES', 'STANDARD_COMMITMENTS', 'VARIABLE_OPERATIONAL_COSTS', 'MARKETING_ADVERTISING'],
+                    'Profitability & Profit Analysis': ['MARKETING_ROI', 'MARKETING_EFFICIENCY', 'REVENUE_PROPORTIONAL', 'PAYROLL_TO_REVENUE_RATIO', 'SUPPLY_PER_VISIT', 'TOTAL_EXPENSE_PER_VISIT', 'REVENUE_PER_VISIT', 'PROFIT_PER_VISIT']
+                };
+
+                // Create a map of metric IDs to data for quick lookup
+                const dataMap = {};
                 data.forEach(item => {
-                    const row = document.createElement('tr');
-                    row.style.borderBottom = '1px solid #e2e8f0';
-                    row.innerHTML = `
-                        <td style="padding: 12px; text-align: left; font-size: 0.9rem; color: #2d3748;">
-                            <div style="font-weight: 600;">${item.title}</div>
-                        </td>
-                        <td style="padding: 12px; text-align: left; font-size: 0.9rem;">
-                            <span style="display: inline-flex; padding: 4px 8px; font-size: 0.75rem; font-weight: 600; border-radius: 12px; ${this.getResponsibilityColorStyle(item.responsibility)}">
-                                ${item.responsibility}
-                            </span>
-                        </td>
-                        <td style="padding: 12px 4px 12px 12px; text-align: right; font-size: 0.9rem; color: #2d3748;">
-                            ${item.title === 'Visit Count' || item.title === 'Private Visit Count' ? 
-                                this.formatVisitCount(item.val2024) : 
-                                item.title === 'Payroll to Revenue Ratio' ?
-                                this.formatPercentage(item.val2024) :
-                                (item.title === 'Marketing ROI (1$ Earned…)' || 
-                                 item.title === 'Marketing Efficiency (# of visits per dollar)' || 
-                                 item.title === 'Supply $ per Visit' || 
-                                 item.title === 'Profit per Visit') ?
-                                this.formatCurrencyWithDecimals(item.val2024) :
-                                this.formatCurrency(item.val2024)
-                            }
-                        </td>
-                        <td style="padding: 12px 4px 12px 4px; text-align: right; font-size: 0.9rem; color: #2d3748;">
-                            ${item.title === 'Visit Count' || item.title === 'Private Visit Count' ? 
-                                this.formatVisitCount(item.val2025) : 
-                                item.title === 'Payroll to Revenue Ratio' ?
-                                this.formatPercentage(item.val2025) :
-                                (item.title === 'Marketing ROI (1$ Earned…)' || 
-                                 item.title === 'Marketing Efficiency (# of visits per dollar)' || 
-                                 item.title === 'Supply $ per Visit' || 
-                                 item.title === 'Profit per Visit') ?
-                                this.formatCurrencyWithDecimals(item.val2025) :
-                                this.formatCurrency(item.val2025)
-                            }
-                        </td>
-                        <td style="padding: 6px 4px; text-align: center; font-size: 0.9rem;">
-                            ${this.formatGrowth(item.growth)}
-                        </td>
-                        <td style="padding: 6px 4px; text-align: right; font-size: 0.9rem; color: #2d3748;">
-                            ${this.formatAbsoluteDifference(item.val2025, item.val2024, item.title)}
+                    // Map both the original title and potential metric ID variations
+                    dataMap[item.title] = item;
+                    // Also map by common variations
+                    if (item.title === 'Marketing ROI (1$ Earned…)') {
+                        dataMap['MARKETING_ROI'] = item;
+                    }
+                    if (item.title === 'Marketing Efficiency (# of visits per dollar)') {
+                        dataMap['MARKETING_EFFICIENCY'] = item;
+                    }
+                    if (item.title === 'Marketing & Advertising') {
+                        dataMap['MARKETING_ADVERTISING'] = item;
+                    }
+                    if (item.title === 'Supply $ per Visit') {
+                        dataMap['SUPPLY_PER_VISIT'] = item;
+                    }
+                    if (item.title === 'Total Expense per visit') {
+                        dataMap['TOTAL_EXPENSE_PER_VISIT'] = item;
+                    }
+                    if (item.title === 'Revenue per Visit') {
+                        dataMap['REVENUE_PER_VISIT'] = item;
+                    }
+                    if (item.title === 'Profit per Visit') {
+                        dataMap['PROFIT_PER_VISIT'] = item;
+                    }
+                });
+
+                // Render each group
+                Object.entries(metricGroups).forEach(([groupTitle, metricIds]) => {
+                    // Add group title row
+                    const groupRow = document.createElement('tr');
+                    groupRow.style.borderBottom = '2px solid #4a5568';
+                    groupRow.style.backgroundColor = '#f7fafc';
+                    groupRow.innerHTML = `
+                        <td style="padding: 16px 12px; text-align: left; font-size: 1rem; font-weight: 700; color: #2d3748; text-transform: uppercase; letter-spacing: 0.05em;" colspan="6">
+                            ${groupTitle}
                         </td>
                     `;
-                    tbody.appendChild(row);
+                    tbody.appendChild(groupRow);
+
+                    // Add metrics under this group
+                    metricIds.forEach(metricId => {
+                        const item = dataMap[metricId];
+                        if (item) {
+                            const row = document.createElement('tr');
+                            row.style.borderBottom = '1px solid #e2e8f0';
+                            row.innerHTML = `
+                                <td style="padding: 12px 12px 12px 32px; text-align: left; font-size: 0.9rem; color: #2d3748;">
+                                    <div style="font-weight: 600;">${item.title}</div>
+                                </td>
+                                <td style="padding: 12px; text-align: left; font-size: 0.9rem;">
+                                    <span style="display: inline-flex; padding: 4px 8px; font-size: 0.75rem; font-weight: 600; border-radius: 12px; ${this.getResponsibilityColorStyle(item.responsibility)}">
+                                        ${item.responsibility}
+                                    </span>
+                                </td>
+                                <td style="padding: 12px 4px 12px 12px; text-align: right; font-size: 0.9rem; color: #2d3748;">
+                                    ${item.title === 'Visit Count' || item.title === 'Private Visit Count' ? 
+                                        this.formatVisitCount(item.val2024) : 
+                                        item.title === 'Payroll to Revenue Ratio' ?
+                                        this.formatPercentage(item.val2024) :
+                                        (item.title === 'Marketing ROI (1$ Earned…)' || 
+                                         item.title === 'Marketing Efficiency (# of visits per dollar)' || 
+                                         item.title === 'Supply $ per Visit' || 
+                                         item.title === 'Profit per Visit') ?
+                                        this.formatCurrencyWithDecimals(item.val2024) :
+                                        this.formatCurrency(item.val2024)
+                                    }
+                                </td>
+                                <td style="padding: 12px 4px 12px 4px; text-align: right; font-size: 0.9rem; color: #2d3748;">
+                                    ${item.title === 'Visit Count' || item.title === 'Private Visit Count' ? 
+                                        this.formatVisitCount(item.val2025) : 
+                                        item.title === 'Payroll to Revenue Ratio' ?
+                                        this.formatPercentage(item.val2025) :
+                                        (item.title === 'Marketing ROI (1$ Earned…)' || 
+                                         item.title === 'Marketing Efficiency (# of visits per dollar)' || 
+                                         item.title === 'Supply $ per Visit' || 
+                                         item.title === 'Profit per Visit') ?
+                                        this.formatCurrencyWithDecimals(item.val2025) :
+                                        this.formatCurrency(item.val2025)
+                                    }
+                                </td>
+                                <td style="padding: 6px 4px; text-align: center; font-size: 0.9rem;">
+                                    ${this.formatGrowth(item.growth)}
+                                </td>
+                                <td style="padding: 6px 4px; text-align: right; font-size: 0.9rem; color: #2d3748;">
+                                    ${this.formatAbsoluteDifference(item.val2025, item.val2024, item.title)}
+                                </td>
+                            `;
+                            tbody.appendChild(row);
+                        }
+                    });
                 });
             },
 
