@@ -2535,7 +2535,7 @@
                     let response;
                     try {
                         console.log('Trying API endpoint: /api/financial-performance');
-                        response = await fetch('/api/financial-performance');
+                        response = await fetch('http://localhost:3003/api/financial-performance');
                         if (response.ok) {
                             console.log('Success with API endpoint');
                         } else {
