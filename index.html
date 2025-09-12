@@ -524,12 +524,12 @@
                         <table style="width: 100%; border-collapse: collapse; table-layout: fixed;" id="expenseAnalysisTable">
                             <thead style="background: #f7fafc;">
                                 <tr>
-                                    <th style="width: 28%; padding: 12px; text-align: left; font-size: 0.8rem; font-weight: 600; color: #4a5568; text-transform: uppercase; letter-spacing: 0.05em;">Metric</th>
-                                    <th style="width: 28%; padding: 12px; text-align: left; font-size: 0.8rem; font-weight: 600; color: #4a5568; text-transform: uppercase; letter-spacing: 0.05em;">Responsibility</th>
-                                    <th style="width: 10%; padding: 12px 4px 12px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: #4a5568; text-transform: uppercase; letter-spacing: 0.05em;">2024 Jan-July</th>
-                                    <th style="width: 10%; padding: 12px 4px 12px 4px; text-align: right; font-size: 0.8rem; font-weight: 600; color: #4a5568; text-transform: uppercase; letter-spacing: 0.05em;">2025 Jan-July</th>
-                                    <th style="width: 8%; padding: 6px 4px; text-align: center; font-size: 0.8rem; font-weight: 600; color: #4a5568; text-transform: uppercase; letter-spacing: 0.05em;">Growth</th>
-                                    <th style="width: 6%; padding: 6px 4px; text-align: right; font-size: 0.8rem; font-weight: 600; color: #4a5568; text-transform: uppercase; letter-spacing: 0.05em;">
+                                    <th style="width: 25%; padding: 12px; text-align: left; font-size: 0.8rem; font-weight: 600; color: #4a5568; text-transform: uppercase; letter-spacing: 0.05em;">Metric</th>
+                                    <th style="width: 20%; padding: 12px; text-align: left; font-size: 0.8rem; font-weight: 600; color: #4a5568; text-transform: uppercase; letter-spacing: 0.05em;">Responsibility</th>
+                                    <th style="width: 15%; padding: 12px 4px 12px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: #4a5568; text-transform: uppercase; letter-spacing: 0.05em;">2024 Jan-July</th>
+                                    <th style="width: 15%; padding: 12px 4px 12px 4px; text-align: right; font-size: 0.8rem; font-weight: 600; color: #4a5568; text-transform: uppercase; letter-spacing: 0.05em;">2025 Jan-July</th>
+                                    <th style="width: 10%; padding: 6px 4px; text-align: center; font-size: 0.8rem; font-weight: 600; color: #4a5568; text-transform: uppercase; letter-spacing: 0.05em;">Growth</th>
+                                    <th style="width: 15%; padding: 6px 4px; text-align: right; font-size: 0.8rem; font-weight: 600; color: #4a5568; text-transform: uppercase; letter-spacing: 0.05em;">
                                         <div style="line-height: 1.1;">Absolute</div>
                                         <div style="line-height: 1.1;">Difference</div>
                                     </th>
@@ -2830,44 +2830,21 @@
                 const tbody = document.querySelector('#expenseAnalysisTable tbody');
                 tbody.innerHTML = '';
 
-                // Define metric groups
+                // Define metric groups using actual metric names
                 const metricGroups = {
-                    'Revenue & Visits': ['TOTAL_REVENUE', 'VISIT_COUNT', 'PRIVATE_VISIT_COUNT'],
-                    'Expenses': ['TOTAL_EXPENSES', 'STANDARD_COMMITMENTS', 'VARIABLE_OPERATIONAL_COSTS', 'MARKETING_ADVERTISING'],
-                    'Profitability & Profit Analysis': ['MARKETING_ROI', 'MARKETING_EFFICIENCY', 'REVENUE_PROPORTIONAL', 'PAYROLL_TO_REVENUE_RATIO', 'SUPPLY_PER_VISIT', 'TOTAL_EXPENSE_PER_VISIT', 'REVENUE_PER_VISIT', 'PROFIT_PER_VISIT']
+                    'Revenue & Visits': ['Total Revenue', 'Visit Count', 'Private Visit Count'],
+                    'Expenses': ['Total Expenses', 'Standard Commitments', 'Variable Operational Costs', 'Marketing & Advertising'],
+                    'Profitability & Profit Analysis': ['Marketing ROI (1$ Earned…)', 'Marketing Efficiency (# of visits per dollar)', 'Revenue Proportional', 'Payroll to Revenue Ratio', 'Supply $ per Visit', 'Total Expense per visit', 'Revenue per Visit', 'Profit per Visit']
                 };
 
-                // Create a map of metric IDs to data for quick lookup
+                // Create a map of metric names to data for quick lookup
                 const dataMap = {};
                 data.forEach(item => {
-                    // Map both the original title and potential metric ID variations
                     dataMap[item.title] = item;
-                    // Also map by common variations
-                    if (item.title === 'Marketing ROI (1$ Earned…)') {
-                        dataMap['MARKETING_ROI'] = item;
-                    }
-                    if (item.title === 'Marketing Efficiency (# of visits per dollar)') {
-                        dataMap['MARKETING_EFFICIENCY'] = item;
-                    }
-                    if (item.title === 'Marketing & Advertising') {
-                        dataMap['MARKETING_ADVERTISING'] = item;
-                    }
-                    if (item.title === 'Supply $ per Visit') {
-                        dataMap['SUPPLY_PER_VISIT'] = item;
-                    }
-                    if (item.title === 'Total Expense per visit') {
-                        dataMap['TOTAL_EXPENSE_PER_VISIT'] = item;
-                    }
-                    if (item.title === 'Revenue per Visit') {
-                        dataMap['REVENUE_PER_VISIT'] = item;
-                    }
-                    if (item.title === 'Profit per Visit') {
-                        dataMap['PROFIT_PER_VISIT'] = item;
-                    }
                 });
 
                 // Render each group
-                Object.entries(metricGroups).forEach(([groupTitle, metricIds]) => {
+                Object.entries(metricGroups).forEach(([groupTitle, metricNames]) => {
                     // Add group title row
                     const groupRow = document.createElement('tr');
                     groupRow.style.borderBottom = '2px solid #4a5568';
@@ -2880,8 +2857,8 @@
                     tbody.appendChild(groupRow);
 
                     // Add metrics under this group
-                    metricIds.forEach(metricId => {
-                        const item = dataMap[metricId];
+                    metricNames.forEach(metricName => {
+                        const item = dataMap[metricName];
                         if (item) {
                             const row = document.createElement('tr');
                             row.style.borderBottom = '1px solid #e2e8f0';
