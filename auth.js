@@ -259,19 +259,28 @@ class DashboardAuth {
     }
     
     async checkAuthentication() {
+        console.log('Checking authentication...');
         const token = this.auth.getAuthToken();
+        console.log('Token found:', !!token);
+        
         if (!token) {
+            console.log('No token found, redirecting to login');
             window.location.href = 'login.html';
             return;
         }
         
         // Verify token with server
+        console.log('Verifying token with server...');
         const isValid = await this.auth.verifyToken();
+        console.log('Token valid:', isValid);
+        
         if (!isValid) {
+            console.log('Token invalid, redirecting to login');
             window.location.href = 'login.html';
             return;
         }
         
+        console.log('Authentication successful, displaying user info');
         // Display user info in header
         this.displayUserInfo();
     }
@@ -346,12 +355,19 @@ class DashboardAuth {
 // Initialize based on current page
 document.addEventListener('DOMContentLoaded', () => {
     const currentPage = window.location.pathname;
+    console.log('Auth initialization - Current page:', currentPage);
     
     if (currentPage.includes('login.html') || currentPage === '/login.html') {
+        console.log('Initializing login page');
         // Initialize login page
         window.auth = new AuthManager();
     } else if (currentPage.includes('index.html') || currentPage === '/' || currentPage === '/index.html') {
+        console.log('Initializing dashboard authentication');
         // Initialize dashboard authentication
+        window.dashboardAuth = new DashboardAuth();
+    } else {
+        console.log('Unknown page, initializing dashboard authentication as fallback');
+        // Fallback to dashboard authentication
         window.dashboardAuth = new DashboardAuth();
     }
 });
