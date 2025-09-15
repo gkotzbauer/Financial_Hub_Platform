@@ -3,15 +3,17 @@
  * Handles login, logout, token management, and authentication state
  */
 class AuthManager {
-    constructor() {
+    constructor(autoRedirect = true) {
         this.apiBase = 'http://localhost:3003/api';
-        this.init();
+        this.init(autoRedirect);
     }
     
-    init() {
+    init(autoRedirect = true) {
         // Check if already logged in
         if (this.isAuthenticated()) {
-            window.location.href = 'index.html';
+            if (autoRedirect) {
+                window.location.href = 'index.html';
+            }
             return;
         }
         
@@ -19,13 +21,21 @@ class AuthManager {
         this.setupLoginForm();
         
         // Set up auto-focus
-        document.getElementById('username').focus();
+        const usernameInput = document.getElementById('username');
+        if (usernameInput) {
+            usernameInput.focus();
+        }
     }
     
     setupLoginForm() {
         const form = document.getElementById('loginForm');
         const usernameInput = document.getElementById('username');
         const passwordInput = document.getElementById('password');
+        
+        // Only set up form if we're on the login page
+        if (!form || !usernameInput || !passwordInput) {
+            return;
+        }
         
         // Form submission
         form.addEventListener('submit', (e) => {
@@ -46,9 +56,18 @@ class AuthManager {
     }
     
     async handleLogin() {
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value;
-        const rememberMe = document.getElementById('rememberMe').checked;
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const rememberMeInput = document.getElementById('rememberMe');
+        
+        if (!usernameInput || !passwordInput || !rememberMeInput) {
+            console.error('Login form elements not found');
+            return;
+        }
+        
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value;
+        const rememberMe = rememberMeInput.checked;
         
         // Basic validation
         if (!username || !password) {
@@ -99,6 +118,11 @@ class AuthManager {
         const loginBtn = document.getElementById('loginBtn');
         const loadingSpinner = document.getElementById('loadingSpinner');
         const loginText = document.getElementById('loginText');
+        
+        if (!loginBtn || !loadingSpinner || !loginText) {
+            console.error('Loading state elements not found');
+            return;
+        }
         
         if (loading) {
             loginBtn.disabled = true;
@@ -185,6 +209,11 @@ class AuthManager {
         const errorDiv = document.getElementById('errorMessage');
         const successDiv = document.getElementById('successMessage');
         
+        if (!errorDiv || !successDiv) {
+            console.error('Error message elements not found');
+            return;
+        }
+        
         errorDiv.textContent = message;
         errorDiv.style.display = 'block';
         successDiv.style.display = 'none';
@@ -199,14 +228,22 @@ class AuthManager {
         const errorDiv = document.getElementById('errorMessage');
         const successDiv = document.getElementById('successMessage');
         
+        if (!errorDiv || !successDiv) {
+            console.error('Success message elements not found');
+            return;
+        }
+        
         successDiv.textContent = message;
         successDiv.style.display = 'block';
         errorDiv.style.display = 'none';
     }
     
     clearMessages() {
-        document.getElementById('errorMessage').style.display = 'none';
-        document.getElementById('successMessage').style.display = 'none';
+        const errorDiv = document.getElementById('errorMessage');
+        const successDiv = document.getElementById('successMessage');
+        
+        if (errorDiv) errorDiv.style.display = 'none';
+        if (successDiv) successDiv.style.display = 'none';
     }
 }
 
@@ -217,7 +254,7 @@ class AuthManager {
 class DashboardAuth {
     constructor() {
         this.apiBase = 'http://localhost:3003/api';
-        this.auth = new AuthManager();
+        this.auth = new AuthManager(false); // Don't auto-redirect
         this.checkAuthentication();
     }
     
