@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Test</title>
+</head>
+<body>
+    <h1>Authentication Test Page</h1>
+    <div id="status">Loading...</div>
+    <div id="token-info"></div>
+    <div id="user-info"></div>
+    
+    <script src="auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Test page loaded');
+            const statusDiv = document.getElementById('status');
+            const tokenDiv = document.getElementById('token-info');
+            const userDiv = document.getElementById('user-info');
+            
+            // Check if auth is available
+            if (window.dashboardAuth) {
+                statusDiv.textContent = 'DashboardAuth initialized';
+                const token = window.dashboardAuth.auth.getAuthToken();
+                tokenDiv.textContent = 'Token: ' + (token ? 'Found' : 'Not found');
+                
+                const user = window.dashboardAuth.auth.getUserInfo();
+                userDiv.textContent = 'User: ' + (user ? user.username : 'Not found');
+            } else {
+                statusDiv.textContent = 'DashboardAuth not initialized';
+            }
+        });
+    </script>
+</body>
+</html>

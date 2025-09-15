@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Auth</title>
+</head>
+<body>
+    <h1>Debug Authentication</h1>
+    <button onclick="testLogin()">Test Login</button>
+    <button onclick="testToken()">Test Token</button>
+    <button onclick="clearStorage()">Clear Storage</button>
+    <div id="output"></div>
+    
+    <script>
+        function log(message) {
+            const output = document.getElementById('output');
+            output.innerHTML += '<div>' + new Date().toISOString() + ': ' + message + '</div>';
+            console.log(message);
+        }
+        
+        async function testLogin() {
+            log('Testing login...');
+            try {
+                const response = await fetch('http://localhost:3003/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username: 'admin', password: 'password', rememberMe: false })
+                });
+                
+                const data = await response.json();
+                log('Login response: ' + JSON.stringify(data));
+                
+                if (response.ok) {
+                    localStorage.setItem('authToken', data.token);
+                    localStorage.setItem('userInfo', JSON.stringify(data.user));
+                    log('Token stored in localStorage');
+                }
+            } catch (error) {
+                log('Login error: ' + error.message);
+            }
+        }
+        
+        function testToken() {
+            const token = localStorage.getItem('authToken');
+            const user = localStorage.getItem('userInfo');
+            log('Token: ' + (token ? 'Found' : 'Not found'));
+            log('User: ' + (user ? user : 'Not found'));
+            
+            if (token) {
+                try {
+                    const payload = JSON.parse(atob(token.split('.')[1]));
+                    log('Token payload: ' + JSON.stringify(payload));
+                    log('Token expires: ' + new Date(payload.exp * 1000).toISOString());
+                    log('Token valid: ' + (payload.exp > Date.now() / 1000));
+                } catch (e) {
+                    log('Token parse error: ' + e.message);
+                }
+            }
+        }
+        
+        function clearStorage() {
+            localStorage.clear();
+            sessionStorage.clear();
+            log('Storage cleared');
+        }
+    </script>
+</body>
+</html>

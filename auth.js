@@ -170,20 +170,28 @@ class AuthManager {
     
     async verifyToken() {
         const token = this.getAuthToken();
-        if (!token) return false;
+        if (!token) {
+            console.log('No token to verify');
+            return false;
+        }
         
         try {
+            console.log('Verifying token with server...');
             const response = await fetch(`${this.apiBase}/auth/verify`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             });
             
+            console.log('Verification response status:', response.status);
+            
             if (response.ok) {
                 const data = await response.json();
+                console.log('Token verification successful, user:', data.user);
                 this.setUserInfo(data.user, localStorage.getItem('authToken') !== null);
                 return true;
             } else {
+                console.log('Token verification failed, status:', response.status);
                 this.logout();
                 return false;
             }
