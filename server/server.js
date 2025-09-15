@@ -2,18 +2,135 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
+const session = require('express-session');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
 
 // Enable CORS for frontend requests
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3002', 'http://localhost:3000'],
+  credentials: true
+}));
+
+// Parse JSON bodies
+app.use(express.json());
+
+// Session configuration
+app.use(session({
+  secret: 'your-session-secret-change-in-production',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false, // Set to true in production with HTTPS
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  }
+}));
+
+// User management (in production, use a proper database)
+const users = [
+  {
+    id: 1,
+    username: 'admin',
+    email: 'admin@company.com',
+    password: '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password: "password"
+    role: 'admin'
+  },
+  {
+    id: 2,
+    username: 'user',
+    email: 'user@company.com',
+    password: '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password: "password"
+    role: 'user'
+  }
+];
+
+// Authentication middleware
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ error: 'Access denied. No token provided.' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(403).json({ error: 'Invalid token.' });
+  }
+};
 
 // Serve static files from the data directory
 app.use('/data', express.static(path.join(__dirname, 'data')));
 
+// Authentication routes
+app.post('/api/auth/login', async (req, res) => {
+  try {
+    const { username, password, rememberMe } = req.body;
+
+    // Find user by username or email
+    const user = users.find(u => u.username === username || u.email === username);
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    // Check password
+    const validPassword = await bcrypt.compare(password, user.password);
+    if (!validPassword) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    // Create JWT token
+    const token = jwt.sign(
+      { 
+        id: user.id, 
+        username: user.username, 
+        email: user.email, 
+        role: user.role 
+      },
+      JWT_SECRET,
+      { expiresIn: rememberMe ? '7d' : '24h' }
+    );
+
+    res.json({
+      token,
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        role: user.role
+      }
+    });
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.get('/api/auth/verify', authenticateToken, (req, res) => {
+  res.json({
+    user: {
+      id: req.user.id,
+      username: req.user.username,
+      email: req.user.email,
+      role: req.user.role
+    }
+  });
+});
+
+app.post('/api/auth/logout', (req, res) => {
+  // In a real app, you might want to blacklist the token
+  res.json({ message: 'Logged out successfully' });
+});
+
 // API endpoint to get the Excel file - dynamically finds any Excel file
-app.get('/api/data', (req, res) => {
+app.get('/api/data', authenticateToken, (req, res) => {
   const dataDir = path.join(__dirname, 'data');
   
   // Check if data directory exists
@@ -50,7 +167,7 @@ app.get('/api/data', (req, res) => {
 });
 
 // API endpoint to list available files
-app.get('/api/files', (req, res) => {
+app.get('/api/files', authenticateToken, (req, res) => {
   const dataDir = path.join(__dirname, 'data');
   
   if (!fs.existsSync(dataDir)) {
@@ -70,7 +187,7 @@ app.get('/api/files', (req, res) => {
 
 
 // API endpoint to get the Financial Performance Data file
-app.get('/api/financial-performance', (req, res) => {
+app.get('/api/financial-performance', authenticateToken, (req, res) => {
   const publicDir = path.join(__dirname, '..', 'public');
   const filePath = path.join(publicDir, 'Financial Performance Data.xlsx');
   
