@@ -149,24 +149,63 @@
         }
 
         function loadRevenueDashboard(user) {
-            // Create iframe to load the revenue analysis
-            const iframe = document.createElement('iframe');
-            iframe.src = 'http://localhost:3003/revenue-analysis/';
-            iframe.style.cssText = `
-                width: 100%;
-                height: calc(100vh - 200px);
-                border: none;
-                border-radius: 10px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            `;
-            
-            // Replace loading content with iframe
-            const container = document.querySelector('.container');
-            const loading = container.querySelector('.loading');
-            container.replaceChild(iframe, loading);
-            
-            // Add user info to header
-            displayUserInfo(user);
+            // Load the revenue analysis content directly
+            fetch('http://localhost:3003/revenue-analysis/', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('authToken') || sessionStorage.getItem('authToken')}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to load revenue dashboard');
+                }
+                return response.text();
+            })
+            .then(html => {
+                // Create a container for the revenue content
+                const revenueContainer = document.createElement('div');
+                revenueContainer.innerHTML = html;
+                
+                // Extract the body content (skip the iframe wrapper)
+                const bodyContent = revenueContainer.querySelector('body');
+                if (bodyContent) {
+                    // Get the main content from the revenue analysis
+                    const mainContent = bodyContent.querySelector('.container');
+                    if (mainContent) {
+                        // Replace loading content with revenue content
+                        const container = document.querySelector('.container');
+                        const loading = container.querySelector('.loading');
+                        container.replaceChild(mainContent, loading);
+                        
+                        // Add user info to header
+                        displayUserInfo(user);
+                    } else {
+                        throw new Error('Could not find main content');
+                    }
+                } else {
+                    throw new Error('Could not parse revenue dashboard content');
+                }
+            })
+            .catch(error => {
+                console.error('Failed to load revenue dashboard:', error);
+                const container = document.querySelector('.container');
+                const loading = container.querySelector('.loading');
+                loading.innerHTML = `
+                    <div style="text-align: center; padding: 50px; color: #e53e3e;">
+                        <h3>Failed to Load Revenue Dashboard</h3>
+                        <p>Error: ${error.message}</p>
+                        <button onclick="location.reload()" style="
+                            background: linear-gradient(135deg, #667eea, #764ba2);
+                            color: white;
+                            border: none;
+                            padding: 10px 20px;
+                            border-radius: 8px;
+                            cursor: pointer;
+                            margin-top: 20px;
+                        ">Retry</button>
+                    </div>
+                `;
+            });
         }
 
         function displayUserInfo(user) {
