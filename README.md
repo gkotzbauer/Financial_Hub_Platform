@@ -1,11 +1,11 @@
-# Revenue Performance Analysis Dashboard
+# Margin Performance Analysis Dashboard
 
 A comprehensive dashboard for analyzing urgent care revenue performance with actionable insights and recommendations.
 
 ## Features
 
-- 📊 **Performance Distribution Analysis** - Visual breakdown of over/under performing weeks
-- 💰 **Revenue Opportunity Tracking** - Identify missed revenue and gains
+- 📊 **Margin Analysis** - Visual breakdown of over/under performing weeks
+- 💰 **Margin Opportunity Tracking** - Identify missed revenue and gains
 - 🎯 **Actionable Recommendations** - AI-powered suggestions for improvement
 - 📈 **Trend Analysis** - 6-month revenue performance tracking
 - 📋 **Detailed Weekly Reports** - Comprehensive performance breakdowns
