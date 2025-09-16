@@ -313,27 +313,57 @@ class DashboardAuth {
         userInfo.innerHTML = `
             <div>
                 <h1 style="color: #2d3748; font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                    RMT Margin Performance Dashboard
+                    📊 RMT Margin Performance Dashboard
                 </h1>
-                <p style="color: #718096; font-size: 1.1rem;">Comprehensive financial analysis and insights</p>
+                <p style="color: #718096; font-size: 1.1rem;">Comprehensive margin insights to drive performance optimization and profitability management</p>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
-                <div style="color: #2d3748; font-weight: 600; font-size: 1rem;">Welcome, ${user.username}</div>
-                <button onclick="dashboardAuth.logout()" style="
-                    background: linear-gradient(135deg, #667eea, #764ba2);
-                    color: white;
-                    border: none;
-                    padding: 8px 16px;
-                    border-radius: 6px;
-                    cursor: pointer;
-                    font-weight: 600;
-                    font-size: 0.85rem;
-                    transition: all 0.3s ease;
-                    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-                " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.4)'" 
-                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(102, 126, 234, 0.3)'">
-                    Logout
-                </button>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <nav style="display: flex; gap: 15px; align-items: center;">
+                    <a href="/" style="
+                        background: linear-gradient(135deg, #667eea, #764ba2);
+                        color: white;
+                        text-decoration: none;
+                        padding: 10px 20px;
+                        border-radius: 8px;
+                        font-weight: 600;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+                    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.4)'" 
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(102, 126, 234, 0.3)'">
+                        📊 Margin Dashboard
+                    </a>
+                    <a href="/revenue-dashboard.html" style="
+                        background: linear-gradient(135deg, #48bb78, #38a169);
+                        color: white;
+                        text-decoration: none;
+                        padding: 10px 20px;
+                        border-radius: 8px;
+                        font-weight: 600;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 2px 8px rgba(72, 187, 120, 0.3);
+                    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(72, 187, 120, 0.4)'" 
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(72, 187, 120, 0.3)'">
+                        💰 Revenue Analysis
+                    </a>
+                </nav>
+                <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+                    <div style="color: #2d3748; font-weight: 600; font-size: 1rem;">Welcome, ${user.username}</div>
+                    <button onclick="dashboardAuth.logout()" style="
+                        background: linear-gradient(135deg, #e53e3e, #c53030);
+                        color: white;
+                        border: none;
+                        padding: 8px 16px;
+                        border-radius: 6px;
+                        cursor: pointer;
+                        font-weight: 600;
+                        font-size: 0.85rem;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 2px 8px rgba(229, 62, 62, 0.3);
+                    " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(229, 62, 62, 0.4)'" 
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(229, 62, 62, 0.3)'">
+                        Logout
+                    </button>
+                </div>
             </div>
         `;
         
