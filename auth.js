@@ -349,7 +349,7 @@ class DashboardAuth {
                 <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
                     <div style="color: #2d3748; font-weight: 600; font-size: 1rem;">Welcome, ${user.username}</div>
                     <button onclick="dashboardAuth.logout()" style="
-                        background: linear-gradient(135deg, #e53e3e, #c53030);
+                        background: linear-gradient(135deg, #667eea, #764ba2);
                         color: white;
                         border: none;
                         padding: 8px 16px;
@@ -358,9 +358,9 @@ class DashboardAuth {
                         font-weight: 600;
                         font-size: 0.85rem;
                         transition: all 0.3s ease;
-                        box-shadow: 0 2px 8px rgba(229, 62, 62, 0.3);
-                    " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(229, 62, 62, 0.4)'" 
-                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(229, 62, 62, 0.3)'">
+                        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+                    " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.4)'" 
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(102, 126, 234, 0.3)'">
                         Logout
                     </button>
                 </div>
