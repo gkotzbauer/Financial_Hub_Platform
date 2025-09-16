@@ -230,6 +230,12 @@ app.get('/revenue-analysis/data/*', authenticateToken, (req, res) => {
   res.sendFile(filePath);
 });
 
+// Serve revenue analysis scripts (CSV files)
+app.get('/revenue-analysis/scripts/*', authenticateToken, (req, res) => {
+  const filePath = path.join(__dirname, '../revenue-analysis', req.path.replace('/revenue-analysis', ''));
+  res.sendFile(filePath);
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Backend server is running' });
