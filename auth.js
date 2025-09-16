@@ -311,13 +311,33 @@ class DashboardAuth {
         `;
         
         userInfo.innerHTML = `
-            <div>
-                <h1 style="color: #2d3748; font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                    📊 RMT Margin Performance Dashboard
-                </h1>
-                <p style="color: #718096; font-size: 1.1rem;">Comprehensive margin insights to drive performance optimization and profitability management</p>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+                <div>
+                    <h1 style="color: #2d3748; font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        📊 RMT Margin Performance Dashboard
+                    </h1>
+                    <p style="color: #718096; font-size: 1.1rem;">Comprehensive margin insights to drive performance optimization and profitability management</p>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+                    <div style="color: #2d3748; font-weight: 600; font-size: 1rem;">Welcome, ${user.username}</div>
+                    <button onclick="dashboardAuth.logout()" style="
+                        background: linear-gradient(135deg, #667eea, #764ba2);
+                        color: white;
+                        border: none;
+                        padding: 8px 16px;
+                        border-radius: 6px;
+                        cursor: pointer;
+                        font-weight: 600;
+                        font-size: 0.85rem;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+                    " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.4)'" 
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(102, 126, 234, 0.3)'">
+                        Logout
+                    </button>
+                </div>
             </div>
-            <div style="display: flex; gap: 15px; align-items: center;">
+            <div style="display: flex; gap: 15px; align-items: center; margin-top: 20px;">
                 <nav style="display: flex; gap: 15px; align-items: center;">
                     <a href="/" style="
                         background: linear-gradient(135deg, #667eea, #764ba2);
@@ -346,24 +366,6 @@ class DashboardAuth {
                         💰 Revenue Analysis
                     </a>
                 </nav>
-                <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
-                    <div style="color: #2d3748; font-weight: 600; font-size: 1rem;">Welcome, ${user.username}</div>
-                    <button onclick="dashboardAuth.logout()" style="
-                        background: linear-gradient(135deg, #667eea, #764ba2);
-                        color: white;
-                        border: none;
-                        padding: 8px 16px;
-                        border-radius: 6px;
-                        cursor: pointer;
-                        font-weight: 600;
-                        font-size: 0.85rem;
-                        transition: all 0.3s ease;
-                        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-                    " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.4)'" 
-                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(102, 126, 234, 0.3)'">
-                        Logout
-                    </button>
-                </div>
             </div>
         `;
         
