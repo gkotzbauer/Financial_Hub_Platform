@@ -162,25 +162,25 @@
                 return response.text();
             })
             .then(html => {
-                // Create a container for the revenue content
-                const revenueContainer = document.createElement('div');
-                revenueContainer.innerHTML = html;
+                // Create a temporary container to parse the HTML
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
                 
-                // Extract the body content (skip the iframe wrapper)
-                const bodyContent = revenueContainer.querySelector('body');
+                // Extract the body content
+                const bodyContent = tempDiv.querySelector('body');
                 if (bodyContent) {
-                    // Get the main content from the revenue analysis
-                    const mainContent = bodyContent.querySelector('.container');
-                    if (mainContent) {
+                    // Get the main container from the revenue analysis
+                    const revenueContainer = bodyContent.querySelector('.container');
+                    if (revenueContainer) {
                         // Replace loading content with revenue content
                         const container = document.querySelector('.container');
                         const loading = container.querySelector('.loading');
-                        container.replaceChild(mainContent, loading);
+                        container.replaceChild(revenueContainer, loading);
                         
                         // Add user info to header
                         displayUserInfo(user);
                     } else {
-                        throw new Error('Could not find main content');
+                        throw new Error('Could not find revenue analysis container');
                     }
                 } else {
                     throw new Error('Could not parse revenue dashboard content');
