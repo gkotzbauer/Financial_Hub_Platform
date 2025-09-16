@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMT Revenue Performance Dashboard - v4.1</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="auth.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: white;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div>
+                    <h1>💰 RMT Revenue Performance Dashboard</h1>
+                    <p>Comprehensive insights to drive higher revenue performance</p>
+                </div>
+                <nav style="display: flex; gap: 15px; align-items: center;">
+                    <a href="/" style="
+                        background: linear-gradient(135deg, #667eea, #764ba2);
+                        color: white;
+                        text-decoration: none;
+                        padding: 10px 20px;
+                        border-radius: 8px;
+                        font-weight: 600;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+                    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.4)'" 
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(102, 126, 234, 0.3)'">
+                        📊 Margin Dashboard
+                    </a>
+                    <a href="/revenue-dashboard.html" style="
+                        background: linear-gradient(135deg, #48bb78, #38a169);
+                        color: white;
+                        text-decoration: none;
+                        padding: 10px 20px;
+                        border-radius: 8px;
+                        font-weight: 600;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 2px 8px rgba(72, 187, 120, 0.3);
+                    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(72, 187, 120, 0.4)'" 
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(72, 187, 120, 0.3)'">
+                        💰 Revenue Analysis
+                    </a>
+                </nav>
+            </div>
+        </div>
+        
+        <div class="loading">
+            <p>Loading Revenue Performance Dashboard...</p>
+            <p>Please wait while we verify your authentication and load the dashboard.</p>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication and load the revenue dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthentication();
+        });
+
+        function checkAuthentication() {
+            const token = localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
+            
+            if (!token) {
+                console.log('No authentication token found, redirecting to login');
+                window.location.href = '/login.html';
+                return;
+            }
+
+            // Verify token with server
+            fetch('http://localhost:3003/api/auth/verify', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Token verification failed');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Authentication successful for revenue analysis:', data.user);
+                // Load the revenue dashboard in an iframe
+                loadRevenueDashboard(data.user);
+            })
+            .catch(error => {
+                console.error('Authentication failed:', error);
+                // Clear invalid token
+                localStorage.removeItem('authToken');
+                sessionStorage.removeItem('authToken');
+                window.location.href = '/login.html';
+            });
+        }
+
+        function loadRevenueDashboard(user) {
+            // Create iframe to load the revenue analysis
+            const iframe = document.createElement('iframe');
+            iframe.src = 'http://localhost:3003/revenue-analysis/';
+            iframe.style.cssText = `
+                width: 100%;
+                height: calc(100vh - 200px);
+                border: none;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            `;
+            
+            // Replace loading content with iframe
+            const container = document.querySelector('.container');
+            const loading = container.querySelector('.loading');
+            container.replaceChild(iframe, loading);
+            
+            // Add user info to header
+            displayUserInfo(user);
+        }
+
+        function displayUserInfo(user) {
+            const header = document.querySelector('.header');
+            if (!header) return;
+            
+            // Add user info to the right side of header
+            const userInfo = document.createElement('div');
+            userInfo.style.cssText = `
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 8px;
+            `;
+            
+            userInfo.innerHTML = `
+                <div style="color: #2d3748; font-weight: 600; font-size: 1rem;">Welcome, ${user.username}</div>
+                <button onclick="logout()" style="
+                    background: linear-gradient(135deg, #e53e3e, #c53030);
+                    color: white;
+                    border: none;
+                    padding: 8px 16px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-weight: 600;
+                    font-size: 0.85rem;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 2px 8px rgba(229, 62, 62, 0.3);
+                " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(229, 62, 62, 0.4)'" 
+                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(229, 62, 62, 0.3)'">
+                    Logout
+                </button>
+            `;
+            
+            // Add to the right side of the header
+            const headerContent = header.querySelector('div');
+            if (headerContent) {
+                headerContent.appendChild(userInfo);
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('authToken');
+            sessionStorage.removeItem('authToken');
+            window.location.href = '/login.html';
+        }
+    </script>
+</body>
+</html>
