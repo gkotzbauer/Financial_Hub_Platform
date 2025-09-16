@@ -51,10 +51,7 @@ const users = [
 // Authentication middleware
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
-  const tokenFromHeader = authHeader && authHeader.split(' ')[1];
-  const tokenFromQuery = req.query.token;
-  
-  const token = tokenFromHeader || tokenFromQuery;
+  const token = authHeader && authHeader.split(' ')[1];
 
   if (!token) {
     return res.status(401).json({ error: 'Access denied. No token provided.' });
@@ -71,11 +68,6 @@ const authenticateToken = (req, res, next) => {
 
 // Serve static files from the data directory
 app.use('/data', express.static(path.join(__dirname, 'data')));
-
-// Serve revenue analysis static files (but not the main HTML file)
-app.use('/revenue-analysis', express.static(path.join(__dirname, '../revenue-analysis'), {
-  index: false // Don't serve index.html automatically
-}));
 
 // Authentication routes
 app.post('/api/auth/login', async (req, res) => {
@@ -212,27 +204,6 @@ app.get('/api/financial-performance', authenticateToken, (req, res) => {
   res.setHeader('Last-Modified', new Date().toUTCString());
   
   // Send the file
-  res.sendFile(filePath);
-});
-
-// Revenue analysis routes
-app.get('/revenue-analysis', authenticateToken, (req, res) => {
-  res.sendFile(path.join(__dirname, '../revenue-analysis/index.html'));
-});
-
-app.get('/revenue-analysis/', authenticateToken, (req, res) => {
-  res.sendFile(path.join(__dirname, '../revenue-analysis/index.html'));
-});
-
-// Serve revenue analysis data
-app.get('/revenue-analysis/data/*', authenticateToken, (req, res) => {
-  const filePath = path.join(__dirname, '../revenue-analysis', req.path.replace('/revenue-analysis', ''));
-  res.sendFile(filePath);
-});
-
-// Serve revenue analysis scripts (CSV files)
-app.get('/revenue-analysis/scripts/*', authenticateToken, (req, res) => {
-  const filePath = path.join(__dirname, '../revenue-analysis', req.path.replace('/revenue-analysis', ''));
   res.sendFile(filePath);
 });
 
