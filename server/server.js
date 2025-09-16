@@ -69,6 +69,9 @@ const authenticateToken = (req, res, next) => {
 // Serve static files from the data directory
 app.use('/data', express.static(path.join(__dirname, 'data')));
 
+// Serve revenue analysis static files
+app.use('/revenue-analysis', express.static(path.join(__dirname, '../revenue-analysis')));
+
 // Authentication routes
 app.post('/api/auth/login', async (req, res) => {
   try {
@@ -204,6 +207,17 @@ app.get('/api/financial-performance', authenticateToken, (req, res) => {
   res.setHeader('Last-Modified', new Date().toUTCString());
   
   // Send the file
+  res.sendFile(filePath);
+});
+
+// Revenue analysis routes
+app.get('/revenue-analysis', authenticateToken, (req, res) => {
+  res.sendFile(path.join(__dirname, '../revenue-analysis/index.html'));
+});
+
+// Serve revenue analysis data
+app.get('/revenue-analysis/data/*', authenticateToken, (req, res) => {
+  const filePath = path.join(__dirname, '../revenue-analysis', req.path.replace('/revenue-analysis', ''));
   res.sendFile(filePath);
 });
 
