@@ -467,7 +467,7 @@
                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(102, 126, 234, 0.3)'">
                         📊 Margin Dashboard
                     </a>
-                    <a href="/revenue-dashboard.html" style="
+                    <a href="javascript:void(0)" onclick="openRevenueDashboard()" style="
                         background: linear-gradient(135deg, #48bb78, #38a169);
                         color: white;
                         text-decoration: none;
@@ -791,6 +791,18 @@
     </div>
 
     <script src="auth.js"></script>
+    <script>
+        // Function to open revenue dashboard with token
+        function openRevenueDashboard() {
+            const token = localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
+            if (token) {
+                window.location.href = `/revenue-dashboard.html?token=${encodeURIComponent(token)}`;
+            } else {
+                alert('Please log in first');
+                window.location.href = '/login.html';
+            }
+        }
+    </script>
     <script>
         window.dashboard = {
             originalData: [],

@@ -149,9 +149,16 @@
         }
 
         function loadRevenueDashboard(user) {
-            // Redirect to the revenue analysis page with authentication
-            const token = localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
+            // Get token from URL parameter first, then from localStorage
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlToken = urlParams.get('token');
+            const token = urlToken || localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
+            
             if (token) {
+                // Store token in localStorage for future use
+                if (urlToken) {
+                    localStorage.setItem('authToken', urlToken);
+                }
                 // Redirect to the revenue analysis page
                 window.location.href = `http://localhost:3003/revenue-analysis/?token=${encodeURIComponent(token)}`;
             } else {
