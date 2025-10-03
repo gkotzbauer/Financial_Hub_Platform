@@ -99,15 +99,30 @@ class AuthManager {
             console.log('Response data:', data);
             
             if (response.ok) {
+                console.log('=== LOGIN SUCCESS ===');
+                console.log('Server response:', data);
+                console.log('Token to store:', data.token);
+                console.log('User to store:', data.user);
+                console.log('Remember me:', rememberMe);
+
                 // Store token and user info
                 this.setAuthToken(data.token, rememberMe);
                 this.setUserInfo(data.user, rememberMe);
-                
+
+                // Verify what was stored
+                console.log('After storage:');
+                console.log('Token in localStorage:', localStorage.getItem('authToken'));
+                console.log('Token in sessionStorage:', sessionStorage.getItem('authToken'));
+                console.log('UserInfo in localStorage:', localStorage.getItem('userInfo'));
+                console.log('UserInfo in sessionStorage:', sessionStorage.getItem('userInfo'));
+                console.log('=== END LOGIN SUCCESS ===');
+
                 // Show success message briefly
                 this.showSuccess('Login successful! Redirecting...');
-                
+
                 // Redirect after short delay
                 setTimeout(() => {
+                    console.log('Redirecting to /index.html');
                     window.location.href = '/index.html';
                 }, 1000);
                 
@@ -277,27 +292,54 @@ class DashboardAuth {
     }
     
     async checkAuthentication() {
+        console.log('=== DASHBOARD AUTH CHECK START ===');
+        console.log('Current URL:', window.location.href);
         console.log('Checking authentication...');
+
+        // Check localStorage
+        const localToken = localStorage.getItem('authToken');
+        console.log('Token in localStorage:', localToken);
+
+        // Check sessionStorage
+        const sessionToken = sessionStorage.getItem('authToken');
+        console.log('Token in sessionStorage:', sessionToken);
+
         const token = this.auth.getAuthToken();
-        console.log('Token found:', !!token);
+        console.log('Token from getAuthToken():', token);
 
         if (!token) {
             console.log('No token found, redirecting to login');
+            console.log('About to redirect to /login.html');
             window.location.href = '/login.html';
             return;
         }
 
         // For demo purposes, just check if token exists and starts with 'demo-token-'
         console.log('Validating demo token...');
-        if (!token.startsWith('demo-token-')) {
+        const isValidFormat = token.startsWith('demo-token-');
+        console.log('Token starts with demo-token-?', isValidFormat);
+
+        if (!isValidFormat) {
             console.log('Invalid demo token format, redirecting to login');
+            console.log('Token value:', token);
+            console.log('About to redirect to /login.html');
             window.location.href = '/login.html';
             return;
         }
 
+        // Check user info
+        const localUserInfo = localStorage.getItem('userInfo');
+        const sessionUserInfo = sessionStorage.getItem('userInfo');
+        console.log('UserInfo in localStorage:', localUserInfo);
+        console.log('UserInfo in sessionStorage:', sessionUserInfo);
+
+        const userInfo = this.auth.getUserInfo();
+        console.log('UserInfo from getUserInfo():', userInfo);
+
         console.log('Authentication successful, displaying user info');
         // Display user info in header
         this.displayUserInfo();
+        console.log('=== DASHBOARD AUTH CHECK END ===');
     }
     
     displayUserInfo() {
@@ -399,14 +441,19 @@ class DashboardAuth {
 // Initialize based on current page
 document.addEventListener('DOMContentLoaded', () => {
     const currentPage = window.location.pathname;
-    console.log('Auth initialization - Current page:', currentPage);
-    
+    console.log('=== AUTH.JS INITIALIZATION ===');
+    console.log('Current page path:', currentPage);
+    console.log('Full URL:', window.location.href);
+    console.log('Storage check at init:');
+    console.log('- localStorage authToken:', localStorage.getItem('authToken'));
+    console.log('- sessionStorage authToken:', sessionStorage.getItem('authToken'));
+
     if (currentPage.includes('login.html') || currentPage === '/login.html') {
         console.log('Initializing login page');
         // Initialize login page
         window.auth = new AuthManager();
     } else if (currentPage.includes('index.html') || currentPage === '/' || currentPage === '/index.html') {
-        console.log('Initializing dashboard authentication');
+        console.log('Initializing dashboard authentication for index page');
         // Initialize dashboard authentication
         window.dashboardAuth = new DashboardAuth();
     } else {
@@ -414,6 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Fallback to dashboard authentication
         window.dashboardAuth = new DashboardAuth();
     }
+    console.log('=== END AUTH.JS INITIALIZATION ===');
 });
 
 // Global logout function for easy access
