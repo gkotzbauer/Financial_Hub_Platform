@@ -4,7 +4,8 @@
  */
 class AuthManager {
     constructor(autoRedirect = true) {
-        this.apiBase = 'http://localhost:3003/api';
+        // Use relative URL for production, will work on any domain
+        this.apiBase = window.location.origin + '/api';
         this.init(autoRedirect);
     }
     

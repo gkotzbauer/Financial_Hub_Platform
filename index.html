@@ -2569,7 +2569,7 @@
                     try {
                         console.log('Trying API endpoint: /api/financial-performance');
                         const token = window.dashboardAuth?.auth?.getAuthToken() || localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
-                        response = await fetch('http://localhost:3003/api/financial-performance', {
+                        response = await fetch(window.location.origin + '/api/financial-performance', {
                             headers: {
                                 'Authorization': `Bearer ${token}`
                             }

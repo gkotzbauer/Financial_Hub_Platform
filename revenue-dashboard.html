@@ -62,7 +62,7 @@
                 } else {
                     // Token is valid, redirect to revenue analysis
                     const token = localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
-                    window.location.href = `http://localhost:3003/revenue-analysis/?token=${encodeURIComponent(token)}`;
+                    window.location.href = `${window.location.origin}/revenue-analysis/?token=${encodeURIComponent(token)}`;
                 }
             });
         });
