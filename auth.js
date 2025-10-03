@@ -271,7 +271,7 @@ class AuthManager {
  */
 class DashboardAuth {
     constructor() {
-        this.apiBase = 'http://localhost:3003/api';
+        this.apiBase = window.location.origin + '/api';
         this.auth = new AuthManager(false); // Don't auto-redirect
         this.checkAuthentication();
     }

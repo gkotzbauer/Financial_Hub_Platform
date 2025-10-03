@@ -43,8 +43,10 @@ app.post('/api/login', (req, res) => {
         res.json({
             success: true,
             token: 'demo-token-' + Date.now(),
-            role: users[username].role,
-            username: username
+            user: {
+                username: username,
+                role: users[username].role
+            }
         });
     } else {
         console.log('Login failed for:', username);
@@ -60,9 +62,9 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Serve dashboard.html for root (if authenticated) or redirect to login
+// Serve index.html for root (main margin dashboard)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dashboard.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Error handling middleware
