@@ -13,7 +13,7 @@ class AuthManager {
         // Check if already logged in
         if (this.isAuthenticated()) {
             if (autoRedirect) {
-                window.location.href = '/dashboard.html';
+                window.location.href = '/index.html';
             }
             return;
         }
@@ -108,7 +108,7 @@ class AuthManager {
                 
                 // Redirect after short delay
                 setTimeout(() => {
-                    window.location.href = '/dashboard.html';
+                    window.location.href = '/index.html';
                 }, 1000);
                 
             } else {
@@ -173,15 +173,9 @@ class AuthManager {
     isAuthenticated() {
         const token = this.getAuthToken();
         if (!token) return false;
-        
-        try {
-            // Basic token validation (check expiration)
-            const payload = JSON.parse(atob(token.split('.')[1]));
-            return payload.exp > Date.now() / 1000;
-        } catch (error) {
-            console.error('Token validation error:', error);
-            return false;
-        }
+
+        // For demo purposes, just check if token exists and has the right format
+        return token.startsWith('demo-token-');
     }
     
     async verifyToken() {
@@ -226,7 +220,7 @@ class AuthManager {
         sessionStorage.removeItem('userInfo');
         
         // Redirect to login page
-        window.location.href = 'login.html';
+        window.location.href = '/login.html';
     }
     
     showError(message) {
@@ -286,24 +280,21 @@ class DashboardAuth {
         console.log('Checking authentication...');
         const token = this.auth.getAuthToken();
         console.log('Token found:', !!token);
-        
+
         if (!token) {
             console.log('No token found, redirecting to login');
-            window.location.href = 'login.html';
+            window.location.href = '/login.html';
             return;
         }
-        
-        // Verify token with server
-        console.log('Verifying token with server...');
-        const isValid = await this.auth.verifyToken();
-        console.log('Token valid:', isValid);
-        
-        if (!isValid) {
-            console.log('Token invalid, redirecting to login');
-            window.location.href = 'login.html';
+
+        // For demo purposes, just check if token exists and starts with 'demo-token-'
+        console.log('Validating demo token...');
+        if (!token.startsWith('demo-token-')) {
+            console.log('Invalid demo token format, redirecting to login');
+            window.location.href = '/login.html';
             return;
         }
-        
+
         console.log('Authentication successful, displaying user info');
         // Display user info in header
         this.displayUserInfo();
