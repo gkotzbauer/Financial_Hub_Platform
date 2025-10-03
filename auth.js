@@ -81,15 +81,22 @@ class AuthManager {
         this.clearMessages();
         
         try {
-            const response = await fetch(`${this.apiBase}/auth/login`, {
+            console.log('Attempting login to:', `${this.apiBase}/login`);
+            console.log('Request payload:', { username, password: '***', rememberMe });
+
+            const response = await fetch(`${this.apiBase}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ username, password, rememberMe })
             });
-            
+
+            console.log('Response status:', response.status);
+            console.log('Response ok:', response.ok);
+
             const data = await response.json();
+            console.log('Response data:', data);
             
             if (response.ok) {
                 // Store token and user info
@@ -108,8 +115,16 @@ class AuthManager {
                 this.showError(data.error || 'Login failed. Please check your credentials.');
             }
         } catch (error) {
-            console.error('Login error:', error);
-            this.showError('Network error. Please check your connection and try again.');
+            console.error('Login error details:', error);
+            console.error('Error type:', error.name);
+            console.error('Error message:', error.message);
+
+            let errorMessage = 'Network error. Please check your connection and try again.';
+            if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                errorMessage = `Failed to connect to server at ${this.apiBase}/login. Server may be down.`;
+            }
+
+            this.showError(errorMessage);
         } finally {
             this.setLoadingState(false);
         }
