@@ -296,6 +296,9 @@ class DashboardAuth {
         console.log('Current URL:', window.location.href);
         console.log('Checking authentication...');
 
+        // Add initial alert to confirm the function is being called
+        alert(`Starting Authentication Check\n\nURL: ${window.location.href}\n\nChecking storage for tokens...`);
+
         // Check localStorage
         const localToken = localStorage.getItem('authToken');
         console.log('Token in localStorage:', localToken);
@@ -310,7 +313,13 @@ class DashboardAuth {
         if (!token) {
             console.log('No token found, redirecting to login');
             console.log('About to redirect to /login.html');
-            window.location.href = '/login.html';
+
+            // Debug alert before redirect
+            alert(`AUTH FAILED - No Token Found\n\nDiagnostic Info:\n- localStorage token: ${localToken}\n- sessionStorage token: ${sessionToken}\n- URL: ${window.location.href}\n\nWill redirect to login in 5 seconds...`);
+
+            setTimeout(() => {
+                window.location.href = '/login.html';
+            }, 5000);
             return;
         }
 
@@ -323,7 +332,13 @@ class DashboardAuth {
             console.log('Invalid demo token format, redirecting to login');
             console.log('Token value:', token);
             console.log('About to redirect to /login.html');
-            window.location.href = '/login.html';
+
+            // Debug alert before redirect
+            alert(`AUTH FAILED - Invalid Token Format\n\nDiagnostic Info:\n- Token value: ${token}\n- Expected format: demo-token-*\n- URL: ${window.location.href}\n\nWill redirect to login in 5 seconds...`);
+
+            setTimeout(() => {
+                window.location.href = '/login.html';
+            }, 5000);
             return;
         }
 
@@ -337,6 +352,10 @@ class DashboardAuth {
         console.log('UserInfo from getUserInfo():', userInfo);
 
         console.log('Authentication successful, displaying user info');
+
+        // Success alert for debugging
+        alert(`AUTH SUCCESS!\n\nDiagnostic Info:\n- Token: ${token}\n- User: ${JSON.stringify(userInfo)}\n- URL: ${window.location.href}\n\nDashboard will load now.`);
+
         // Display user info in header
         this.displayUserInfo();
         console.log('=== DASHBOARD AUTH CHECK END ===');
