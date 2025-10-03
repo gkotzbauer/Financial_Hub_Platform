@@ -99,23 +99,13 @@ class AuthManager {
             console.log('Response data:', data);
             
             if (response.ok) {
-                console.log('=== LOGIN SUCCESS DEBUG ===');
-                console.log('Response data:', data);
-                console.log('Token:', data.token);
-                console.log('User info:', data.user);
-
                 // Store token and user info
                 this.setAuthToken(data.token, rememberMe);
                 this.setUserInfo(data.user, rememberMe);
-
-                // Verify stored data
-                console.log('Stored token:', this.getAuthToken());
-                console.log('Stored user info:', this.getUserInfo());
-                console.log('=== END LOGIN SUCCESS DEBUG ===');
-
+                
                 // Show success message briefly
                 this.showSuccess('Login successful! Redirecting...');
-
+                
                 // Redirect after short delay
                 setTimeout(() => {
                     window.location.href = '/index.html';
@@ -287,11 +277,9 @@ class DashboardAuth {
     }
     
     async checkAuthentication() {
-        console.log('=== DASHBOARD AUTH CHECK START ===');
         console.log('Checking authentication...');
         const token = this.auth.getAuthToken();
         console.log('Token found:', !!token);
-        console.log('Token value:', token);
 
         if (!token) {
             console.log('No token found, redirecting to login');
@@ -303,18 +291,6 @@ class DashboardAuth {
         console.log('Validating demo token...');
         if (!token.startsWith('demo-token-')) {
             console.log('Invalid demo token format, redirecting to login');
-            console.log('Token does not start with demo-token-:', token);
-            window.location.href = '/login.html';
-            return;
-        }
-
-        // Check if user info exists
-        const userInfo = this.auth.getUserInfo();
-        console.log('User info found:', !!userInfo);
-        console.log('User info:', userInfo);
-
-        if (!userInfo) {
-            console.log('No user info found, redirecting to login');
             window.location.href = '/login.html';
             return;
         }
@@ -322,7 +298,6 @@ class DashboardAuth {
         console.log('Authentication successful, displaying user info');
         // Display user info in header
         this.displayUserInfo();
-        console.log('=== DASHBOARD AUTH CHECK END ===');
     }
     
     displayUserInfo() {
