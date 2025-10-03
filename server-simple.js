@@ -60,9 +60,9 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Serve login.html for root
+// Serve dashboard.html for root (if authenticated) or redirect to login
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'login.html'));
+    res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
 
 // Error handling middleware

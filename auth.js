@@ -13,7 +13,7 @@ class AuthManager {
         // Check if already logged in
         if (this.isAuthenticated()) {
             if (autoRedirect) {
-                window.location.href = 'index.html';
+                window.location.href = '/dashboard.html';
             }
             return;
         }
@@ -108,7 +108,7 @@ class AuthManager {
                 
                 // Redirect after short delay
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = '/dashboard.html';
                 }, 1000);
                 
             } else {
