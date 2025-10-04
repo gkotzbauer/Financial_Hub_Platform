@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RMT Analytics Dashboard</title>
+    <title>RMT Financial Hub</title>
     <style>
         * {
             margin: 0;
@@ -204,7 +204,7 @@
         </div>
 
         <div class="header">
-            <h1>🚀 RMT Analytics Hub</h1>
+            <h1>🚀 RMT Financial Hub</h1>
             <p>Comprehensive financial analytics and performance insights</p>
         </div>
 
@@ -243,25 +243,22 @@
 
     <script src="auth-v2.js"></script>
     <script>
-        // Initialize auth manager but don't auto-redirect
-        const auth = new AuthManager(false);
-
-        // Check authentication on page load
+        // Wait for auth-v2.js to initialize DashboardAuth
         document.addEventListener('DOMContentLoaded', function() {
-            if (!auth.isAuthenticated()) {
-                window.location.href = '/login.html';
-                return;
-            }
-
-            // Display user info
-            const userInfo = auth.getUserInfo();
-            if (userInfo) {
-                document.getElementById('welcomeText').textContent = `Welcome, ${userInfo.username}! (${userInfo.role})`;
-            }
+            // The DashboardAuth from auth-v2.js will handle authentication
+            // Just update the welcome text when ready
+            setTimeout(() => {
+                if (window.dashboardAuth && window.dashboardAuth.auth) {
+                    const userInfo = window.dashboardAuth.auth.getUserInfo();
+                    if (userInfo) {
+                        document.getElementById('welcomeText').textContent = `Welcome, ${userInfo.username}! (${userInfo.role})`;
+                    }
+                }
+            }, 100);
         });
 
         function goToExpenseDashboard() {
-            window.location.href = '/expense-dashboard.html';
+            window.location.href = '/index.html';  // Changed to index.html which is the actual margin dashboard
         }
 
         function goToRevenueDashboard() {
@@ -269,8 +266,14 @@
         }
 
         function logout() {
-            auth.logout();
-            window.location.href = '/login.html';
+            if (window.dashboardAuth && window.dashboardAuth.auth) {
+                window.dashboardAuth.auth.logout();
+            } else {
+                // Fallback
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.href = '/login.html';
+            }
         }
     </script>
 </body>

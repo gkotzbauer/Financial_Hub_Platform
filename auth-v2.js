@@ -13,7 +13,7 @@ class AuthManager {
         // Check if already logged in
         if (this.isAuthenticated()) {
             if (autoRedirect) {
-                window.location.href = '/index.html';
+                window.location.href = '/dashboard.html';
             }
             return;
         }
@@ -110,7 +110,7 @@ class AuthManager {
 
                 // Redirect after short delay
                 setTimeout(() => {
-                    window.location.href = '/index.html';
+                    window.location.href = '/dashboard.html';
                 }, 1000);
                 
             } else {
@@ -411,8 +411,12 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Initializing login page');
         // Initialize login page
         window.auth = new AuthManager();
+    } else if (currentPage.includes('dashboard.html') || currentPage === '/dashboard.html') {
+        console.log('Initializing hub page authentication');
+        // Initialize hub authentication
+        window.dashboardAuth = new DashboardAuth();
     } else if (currentPage.includes('index.html') || currentPage === '/' || currentPage === '/index.html') {
-        console.log('Initializing dashboard authentication');
+        console.log('Initializing margin dashboard authentication');
         // Initialize dashboard authentication
         window.dashboardAuth = new DashboardAuth();
     } else {
