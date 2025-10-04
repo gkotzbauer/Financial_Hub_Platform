@@ -1,0 +1,457 @@
+{
+  "source": "Financial Performance Data",
+  "lastUpdated": "2025-09-19T11:26:08.824Z",
+  "rowCount": 45,
+  "data": [
+    {
+      "Metric_ID": "TOTAL_REVENUE",
+      "Metric_Name": "Total Revenue",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "Team",
+      "Value_2024_Jan_July": 689,
+      "Value_2025_Jan_July": 993,
+      "Growth_Rate_Decimal": 0.441,
+      "Growth_Rate_Percentage": 44
+    },
+    {
+      "Metric_ID": "VISIT_COUNT",
+      "Metric_Name": "Visit Count",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "RCM/Marketing",
+      "Value_2024_Jan_July": 6263,
+      "Value_2025_Jan_July": 7902,
+      "Growth_Rate_Decimal": 0.262,
+      "Growth_Rate_Percentage": 26
+    },
+    {
+      "Metric_ID": "PRIVATE_VISIT_COUNT",
+      "Metric_Name": "Private Visit Count",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "RCM/Marketing",
+      "Value_2024_Jan_July": 5036,
+      "Value_2025_Jan_July": 6117,
+      "Growth_Rate_Decimal": 0.215,
+      "Growth_Rate_Percentage": 22
+    },
+    {
+      "Metric_ID": "TOTAL_EXPENSES",
+      "Metric_Name": "Total Expenses",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "Team",
+      "Value_2024_Jan_July": 896,
+      "Value_2025_Jan_July": 788,
+      "Growth_Rate_Decimal": -0.121,
+      "Growth_Rate_Percentage": -12
+    },
+    {
+      "Metric_ID": "STANDARD_COMMITMENTS",
+      "Metric_Name": "Standard Commitments",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "Owner Controlled",
+      "Value_2024_Jan_July": "$282,396 ",
+      "Value_2025_Jan_July": "$215,022 ",
+      "Growth_Rate_Decimal": -0.239,
+      "Growth_Rate_Percentage": -24
+    },
+    {
+      "Metric_ID": "VARIABLE_OPERATIONAL_COSTS",
+      "Metric_Name": "Variable Operational Costs",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "Ops - Clinical Administrator Controlled",
+      "Value_2024_Jan_July": "$313,970 ",
+      "Value_2025_Jan_July": "$305,786 ",
+      "Growth_Rate_Decimal": -0.026,
+      "Growth_Rate_Percentage": -3
+    },
+    {
+      "Metric_ID": "MARKETING_ADVERTISING",
+      "Metric_Name": "Marketing & Advertising",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "Owner Controlled",
+      "Value_2024_Jan_July": "$56,914 ",
+      "Value_2025_Jan_July": "$64,665 ",
+      "Growth_Rate_Decimal": 0.136,
+      "Growth_Rate_Percentage": 14
+    },
+    {
+      "Metric_ID": "MARKETING_ROI",
+      "Metric_Name": "Marketing ROI (1$ Earned…)",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "Owner Controlled",
+      "Value_2024_Jan_July": " $11.11 ",
+      "Value_2025_Jan_July": " $14.36 ",
+      "Growth_Rate_Decimal": 0.293,
+      "Growth_Rate_Percentage": 26
+    },
+    {
+      "Metric_ID": "MARKETING_EFFICIENCY",
+      "Metric_Name": "Marketing Efficiency (# of visits per dollar)",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "Owner Controlled",
+      "Value_2024_Jan_July": 0.11,
+      "Value_2025_Jan_July": 0.12,
+      "Growth_Rate_Decimal": 0.11,
+      "Growth_Rate_Percentage": 9
+    },
+    {
+      "Metric_ID": "REVENUE_PROPORTIONAL",
+      "Metric_Name": "Revenue Proportional",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "AFC / Vendor Payments",
+      "Value_2024_Jan_July": "$70,417 ",
+      "Value_2025_Jan_July": "$84,980 ",
+      "Growth_Rate_Decimal": 0.207,
+      "Growth_Rate_Percentage": 21
+    },
+    {
+      "Metric_ID": "PAYROLL_TO_REVENUE_RATIO",
+      "Metric_Name": "Payroll to Revenue Ratio",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "Ops - Clinical Administrator Controlled",
+      "Value_2024_Jan_July": 49,
+      "Value_2025_Jan_July": 39,
+      "Growth_Rate_Decimal": -0.204,
+      "Growth_Rate_Percentage": -20
+    },
+    {
+      "Metric_ID": "SUPPLY_PER_VISIT",
+      "Metric_Name": "Supply $ per Visit",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "Ops - Clinical Administrator Controlled",
+      "Value_2024_Jan_July": "$17.25 ",
+      "Value_2025_Jan_July": "$9.44 ",
+      "Growth_Rate_Decimal": -0.453,
+      "Growth_Rate_Percentage": -45
+    },
+    {
+      "Metric_ID": "TOTAL_EXPENSE_PER_VISIT",
+      "Metric_Name": "Total Expense per visit",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "Ops - Clinical Administrator Controlled",
+      "Value_2024_Jan_July": 143,
+      "Value_2025_Jan_July": 100,
+      "Growth_Rate_Decimal": -0.303,
+      "Growth_Rate_Percentage": -30
+    },
+    {
+      "Metric_ID": "REVENUE_PER_VISIT",
+      "Metric_Name": "Revenue per Visit",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "RCM/Marketing",
+      "Value_2024_Jan_July": 110,
+      "Value_2025_Jan_July": 126,
+      "Growth_Rate_Decimal": 0.142,
+      "Growth_Rate_Percentage": 14
+    },
+    {
+      "Metric_ID": "PROFIT_PER_VISIT",
+      "Metric_Name": "Profit per Visit",
+      "Category": "YOY Expense & Profitability Analysis",
+      "Responsibility": "Team",
+      "Value_2024_Jan_July": -33.12,
+      "Value_2025_Jan_July": 25.94,
+      "Growth_Rate_Decimal": 1.783,
+      "Growth_Rate_Percentage": 1778
+    },
+    {
+      "Metric_ID": "CASHFLOW_AUGUST_VISIT_AVG",
+      "Metric_Name": "August 2023/2024 Visit Average",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Historical",
+      "Value_2024_Jan_July": 685,
+      "Value_2025_Jan_July": "",
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_AUGUST_VISIT_PROJ",
+      "Metric_Name": "August 2025 Visit Projection",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 864,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_AUGUST_EXPENSES",
+      "Metric_Name": "August 2025 Expected Expenses",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 86,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_AUGUST_REVENUE",
+      "Metric_Name": "August 2025 Expected Revenue",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 108,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_AUGUST_PROFIT",
+      "Metric_Name": "August 2025 Expected Profit",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 22415,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_AUGUST_CASH_POSITION",
+      "Metric_Name": "August 2025 End of Month Cash Position",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 272415,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_SEPTEMBER_VISIT_AVG",
+      "Metric_Name": "September 2023/2024 Visit Average",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Historical",
+      "Value_2024_Jan_July": 808,
+      "Value_2025_Jan_July": "",
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_SEPTEMBER_VISIT_PROJ",
+      "Metric_Name": "September 2025 Visit Projection",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 1019,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_SEPTEMBER_EXPENSES",
+      "Metric_Name": "September 2025 Expected Expenses",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 101,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_SEPTEMBER_REVENUE",
+      "Metric_Name": "September 2025 Expected Revenue",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 128,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_SEPTEMBER_PROFIT",
+      "Metric_Name": "September 2025 Expected Profit",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 26440,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_SEPTEMBER_CASH_POSITION",
+      "Metric_Name": "September 2025 End of Month Cash Position",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 298854,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_OCTOBER_VISIT_AVG",
+      "Metric_Name": "October 2023/2024 Visit Average",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Historical",
+      "Value_2024_Jan_July": 784,
+      "Value_2025_Jan_July": "",
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_OCTOBER_VISIT_PROJ",
+      "Metric_Name": "October 2025 Visit Projection",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 989,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_OCTOBER_EXPENSES",
+      "Metric_Name": "October 2025 Expected Expenses",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 98,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_OCTOBER_REVENUE",
+      "Metric_Name": "October 2025 Expected Revenue",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 124,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_OCTOBER_PROFIT",
+      "Metric_Name": "October 2025 Expected Profit",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 25654,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_OCTOBER_CASH_POSITION",
+      "Metric_Name": "October 2025 End of Month Cash Position",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 324508,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_NOVEMBER_VISIT_AVG",
+      "Metric_Name": "November 2023/2024 Visit Average",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Historical",
+      "Value_2024_Jan_July": 830,
+      "Value_2025_Jan_July": "",
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_NOVEMBER_VISIT_PROJ",
+      "Metric_Name": "November 2025 Visit Projection",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 1047,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_NOVEMBER_EXPENSES",
+      "Metric_Name": "November 2025 Expected Expenses",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 104,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_NOVEMBER_REVENUE",
+      "Metric_Name": "November 2025 Expected Revenue",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 131,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_NOVEMBER_PROFIT",
+      "Metric_Name": "November 2025 Expected Profit",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 27159,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_NOVEMBER_CASH_POSITION",
+      "Metric_Name": "November 2025 End of Month Cash Position",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 351668,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_DECEMBER_VISIT_AVG",
+      "Metric_Name": "December 2023/2024 Visit Average",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Historical",
+      "Value_2024_Jan_July": 754,
+      "Value_2025_Jan_July": "",
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_DECEMBER_VISIT_PROJ",
+      "Metric_Name": "December 2025 Visit Projection",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 951,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_DECEMBER_EXPENSES",
+      "Metric_Name": "December 2025 Expected Expenses",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 94,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_DECEMBER_REVENUE",
+      "Metric_Name": "December 2025 Expected Revenue",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 119,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_DECEMBER_PROFIT",
+      "Metric_Name": "December 2025 Expected Profit",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 24673,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    },
+    {
+      "Metric_ID": "CASHFLOW_DECEMBER_CASH_POSITION",
+      "Metric_Name": "December 2025 End of Month Cash Position",
+      "Category": "Remaining Year Cashflow Projections",
+      "Responsibility": "Forecast",
+      "Value_2024_Jan_July": "",
+      "Value_2025_Jan_July": 376340,
+      "Growth_Rate_Decimal": "",
+      "Growth_Rate_Percentage": ""
+    }
+  ]
+}

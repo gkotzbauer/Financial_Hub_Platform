@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Health Chat - Simple Version</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            font-size: 16px;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 20px;
+            margin: -20px -20px 20px -20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .chat-container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 400px;
+        }
+        .message {
+            margin-bottom: 16px;
+        }
+        .bot-message, .user-message {
+            padding: 14px 18px;
+            border-radius: 12px;
+            max-width: 75%;
+            word-wrap: break-word;
+            font-size: 17px;
+            line-height: 1.5;
+        }
+        .bot-message {
+            background: white;
+            border: 1px solid #e0e0e0;
+        }
+        .user-message {
+            background: #667eea;
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+        .input-container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 20px auto;
+            display: flex;
+            gap: 8px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 14px 18px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 17px;
+            outline: none;
+        }
+        .send-button {
+            padding: 14px 26px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧠 Sofia - Your Brain Health Companion</h1>
+        <p>The partner you need to optimize your brain health and quality of life while aging</p>
+    </div>
+
+    <div class="chat-container" id="chatContainer">
+        <!-- Messages will be added here -->
+    </div>
+
+    <div class="input-container">
+        <input type="text" id="userInput" placeholder="Type your response..." />
+        <button class="send-button" onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        let messages = [];
+
+        function addBotMessage(text) {
+            const message = { sender: 'bot', text: text };
+            messages.push(message);
+            renderMessages();
+        }
+
+        function addUserMessage(text) {
+            const message = { sender: 'user', text: text };
+            messages.push(message);
+            renderMessages();
+        }
+
+        function renderMessages() {
+            const container = document.getElementById('chatContainer');
+            container.innerHTML = '';
+
+            messages.forEach(message => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message';
+
+                const messageContent = document.createElement('div');
+                messageContent.className = message.sender === 'bot' ? 'bot-message' : 'user-message';
+                messageContent.innerHTML = message.text.replace(/\n/g, '<br>');
+
+                messageDiv.appendChild(messageContent);
+                container.appendChild(messageDiv);
+            });
+
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim();
+
+            if (message) {
+                addUserMessage(message);
+                input.value = '';
+
+                // Simple response logic
+                setTimeout(() => {
+                    if (message.toLowerCase().includes('ready to learn')) {
+                        addBotMessage('Excellent! Your readiness to learn is exactly the right mindset for brain health training. Let\'s continue with the session content.');
+                    } else if (message.toLowerCase().includes('session')) {
+                        addBotMessage('I can help you with brain health training sessions. This is a simplified version of the app. The full version has comprehensive session content and progress tracking.');
+                    } else {
+                        addBotMessage('Thank you for your response. In the full version, I would provide personalized brain health training based on your input.');
+                    }
+                }, 1000);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            addBotMessage('Welcome to your Brain Health Companion! I\'m here to help you understand and optimize your brain health.\\n\\nThis is a simplified version. The full app includes 7 interactive training sessions, progress tracking, and personalized content.\\n\\nTry saying "Ready to learn" to see the response!');
+        });
+
+        // Enter key handler
+        document.getElementById('userInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

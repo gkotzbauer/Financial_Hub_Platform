@@ -92,13 +92,19 @@ app.post('/api/upload', (req, res) => {
     });
 });
 
-// Import financial query engine and dashboard metric mapper
-import FinancialDataQuery from './server/utils/financial-data-query.js';
-import DashboardMetricMapper from './server/utils/dashboard-metric-mapper.js';
+// Optional imports - only load if files exist to prevent startup errors
+let financialQueryEngine = null;
+let metricMapper = null;
 
-// Initialize engines
-const financialQueryEngine = new FinancialDataQuery();
-const metricMapper = new DashboardMetricMapper();
+try {
+    const FinancialDataQuery = await import('./server/utils/financial-data-query.js');
+    const DashboardMetricMapper = await import('./server/utils/dashboard-metric-mapper.js');
+    financialQueryEngine = new FinancialDataQuery.default();
+    metricMapper = new DashboardMetricMapper.default();
+    console.log('Optional data engines loaded successfully');
+} catch (error) {
+    console.log('Optional data engines not available:', error.message);
+}
 
 // Data endpoints
 app.get('/api/revenue-data', (req, res) => {

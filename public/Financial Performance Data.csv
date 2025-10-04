@@ -1,0 +1,46 @@
+Metric_ID,Metric_Name,Category,Responsibility,Value_2024_Jan_July,Value_2025_Jan_July,Growth_Rate_Decimal,Growth_Rate_Percentage
+TOTAL_REVENUE,Total Revenue,YOY Expense & Profitability Analysis,Team,"689,185","993,263",0.441,44
+VISIT_COUNT,Visit Count,YOY Expense & Profitability Analysis,RCM/Marketing,6263,7902,0.262,26
+PRIVATE_VISIT_COUNT,Private Visit Count,YOY Expense & Profitability Analysis,RCM/Marketing,5036,6117,0.215,22
+TOTAL_EXPENSES,Total Expenses,YOY Expense & Profitability Analysis,Team,"896,645","788,324",-0.121,-12
+STANDARD_COMMITMENTS,Standard Commitments,YOY Expense & Profitability Analysis,Owner Controlled,"$282,396 ","$215,022 ",-0.239,-24
+VARIABLE_OPERATIONAL_COSTS,Variable Operational Costs,YOY Expense & Profitability Analysis,Ops - Clinical Administrator Controlled,"$313,970 ","$305,786 ",-0.026,-3
+MARKETING_ADVERTISING,Marketing & Advertising,YOY Expense & Profitability Analysis,Owner Controlled,"$56,914 ","$64,665 ",0.136,14
+MARKETING_ROI,Marketing ROI (1$ Earned…),YOY Expense & Profitability Analysis,Owner Controlled, $11.11 , $14.36 ,0.293,26
+MARKETING_EFFICIENCY,Marketing Efficiency (# of visits per dollar),YOY Expense & Profitability Analysis,Owner Controlled, 0.11 , 0.12 ,0.110,9
+REVENUE_PROPORTIONAL,Revenue Proportional,YOY Expense & Profitability Analysis,AFC / Vendor Payments,"$70,417 ","$84,980 ",0.207,21
+PAYROLL_TO_REVENUE_RATIO,Payroll to Revenue Ratio,YOY Expense & Profitability Analysis,Ops - Clinical Administrator Controlled,49%,39%,-0.204,-20
+SUPPLY_PER_VISIT,Supply $ per Visit,YOY Expense & Profitability Analysis,Ops - Clinical Administrator Controlled,$17.25 ,$9.44 ,-0.453,-45
+TOTAL_EXPENSE_PER_VISIT,Total Expense per visit,YOY Expense & Profitability Analysis,Ops - Clinical Administrator Controlled,143,100,-0.303,-30
+REVENUE_PER_VISIT,Revenue per Visit,YOY Expense & Profitability Analysis,RCM/Marketing,110,126,0.142,14
+PROFIT_PER_VISIT,Profit per Visit,YOY Expense & Profitability Analysis,Team,-33.12,25.94,1.783,1778
+CASHFLOW_AUGUST_VISIT_AVG,August 2023/2024 Visit Average,Remaining Year Cashflow Projections,Historical,685,,,
+CASHFLOW_AUGUST_VISIT_PROJ,August 2025 Visit Projection,Remaining Year Cashflow Projections,Forecast,,864,,
+CASHFLOW_AUGUST_EXPENSES,August 2025 Expected Expenses,Remaining Year Cashflow Projections,Forecast,," 86,221 ",,
+CASHFLOW_AUGUST_REVENUE,August 2025 Expected Revenue,Remaining Year Cashflow Projections,Forecast,," 108,636 ",,
+CASHFLOW_AUGUST_PROFIT,August 2025 Expected Profit,Remaining Year Cashflow Projections,Forecast,,22415,,
+CASHFLOW_AUGUST_CASH_POSITION,August 2025 End of Month Cash Position,Remaining Year Cashflow Projections,Forecast,,272415,,
+CASHFLOW_SEPTEMBER_VISIT_AVG,September 2023/2024 Visit Average,Remaining Year Cashflow Projections,Historical,808,,,
+CASHFLOW_SEPTEMBER_VISIT_PROJ,September 2025 Visit Projection,Remaining Year Cashflow Projections,Forecast,,1019,,
+CASHFLOW_SEPTEMBER_EXPENSES,September 2025 Expected Expenses,Remaining Year Cashflow Projections,Forecast,," 101,703 ",,
+CASHFLOW_SEPTEMBER_REVENUE,September 2025 Expected Revenue,Remaining Year Cashflow Projections,Forecast,," 128,143 ",,
+CASHFLOW_SEPTEMBER_PROFIT,September 2025 Expected Profit,Remaining Year Cashflow Projections,Forecast,,26440,,
+CASHFLOW_SEPTEMBER_CASH_POSITION,September 2025 End of Month Cash Position,Remaining Year Cashflow Projections,Forecast,,298854,,
+CASHFLOW_OCTOBER_VISIT_AVG,October 2023/2024 Visit Average,Remaining Year Cashflow Projections,Historical,784,,,
+CASHFLOW_OCTOBER_VISIT_PROJ,October 2025 Visit Projection,Remaining Year Cashflow Projections,Forecast,,989,,
+CASHFLOW_OCTOBER_EXPENSES,October 2025 Expected Expenses,Remaining Year Cashflow Projections,Forecast,," 98,682 ",,
+CASHFLOW_OCTOBER_REVENUE,October 2025 Expected Revenue,Remaining Year Cashflow Projections,Forecast,," 124,336 ",,
+CASHFLOW_OCTOBER_PROFIT,October 2025 Expected Profit,Remaining Year Cashflow Projections,Forecast,,25654,,
+CASHFLOW_OCTOBER_CASH_POSITION,October 2025 End of Month Cash Position,Remaining Year Cashflow Projections,Forecast,,324508,,
+CASHFLOW_NOVEMBER_VISIT_AVG,November 2023/2024 Visit Average,Remaining Year Cashflow Projections,Historical,830,,,
+CASHFLOW_NOVEMBER_VISIT_PROJ,November 2025 Visit Projection,Remaining Year Cashflow Projections,Forecast,,1047,,
+CASHFLOW_NOVEMBER_EXPENSES,November 2025 Expected Expenses,Remaining Year Cashflow Projections,Forecast,," 104,472 ",,
+CASHFLOW_NOVEMBER_REVENUE,November 2025 Expected Revenue,Remaining Year Cashflow Projections,Forecast,," 131,632 ",,
+CASHFLOW_NOVEMBER_PROFIT,November 2025 Expected Profit,Remaining Year Cashflow Projections,Forecast,,27159,,
+CASHFLOW_NOVEMBER_CASH_POSITION,November 2025 End of Month Cash Position,Remaining Year Cashflow Projections,Forecast,,351668,,
+CASHFLOW_DECEMBER_VISIT_AVG,December 2023/2024 Visit Average,Remaining Year Cashflow Projections,Historical,754,,,
+CASHFLOW_DECEMBER_VISIT_PROJ,December 2025 Visit Projection,Remaining Year Cashflow Projections,Forecast,,951,,
+CASHFLOW_DECEMBER_EXPENSES,December 2025 Expected Expenses,Remaining Year Cashflow Projections,Forecast,," 94,906 ",,
+CASHFLOW_DECEMBER_REVENUE,December 2025 Expected Revenue,Remaining Year Cashflow Projections,Forecast,," 119,579 ",,
+CASHFLOW_DECEMBER_PROFIT,December 2025 Expected Profit,Remaining Year Cashflow Projections,Forecast,,24673,,
+CASHFLOW_DECEMBER_CASH_POSITION,December 2025 End of Month Cash Position,Remaining Year Cashflow Projections,Forecast,,376340,,

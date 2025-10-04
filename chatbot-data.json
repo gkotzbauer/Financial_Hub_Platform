@@ -1,0 +1,521 @@
+{
+  "expenseGrowthAnalysis": {
+    "mostRecentMonth": "June 2025",
+    "grewFasterThanGP": {
+      "count": 3,
+      "categories": [
+        "Utilities-Other",
+        "Cleaning office",
+        "Computer Supplies"
+      ],
+      "details": [
+        {
+          "category": "Utilities-Other",
+          "status": "Expenses Grew Faster Than GP",
+          "assessment": "Margin Risk",
+          "diagnostic": "Margin Risk – Investigate"
+        },
+        {
+          "category": "Cleaning office",
+          "status": "Expenses Grew Faster Than GP",
+          "assessment": "Margin Risk",
+          "diagnostic": "Margin Risk – Investigate"
+        },
+        {
+          "category": "Computer Supplies",
+          "status": "Expenses Grew Faster Than GP",
+          "assessment": "Below Threshold",
+          "diagnostic": "Below Threshold"
+        }
+      ]
+    }
+  },
+
+  "expenseTrendsOverDataset": {
+    "tableData": [
+      {
+        "category": "420000 Income - Insurance/Patient Pay",
+        "monthsOutpaced": 0,
+        "monthsDidNotDecline": 0,
+        "monthsOpposite": 0,
+        "potentialLoss": "$0"
+      },
+      {
+        "category": "510000 Management Fees",
+        "monthsOutpaced": 8,
+        "monthsDidNotDecline": 8,
+        "monthsOpposite": 0,
+        "potentialLoss": "$2,286.94"
+      },
+      {
+        "category": "600100 Payroll Expense",
+        "monthsOutpaced": 7,
+        "monthsDidNotDecline": 4,
+        "monthsOpposite": 7,
+        "potentialLoss": "$67,406.44"
+      },
+      {
+        "category": "600700 Employee Screening",
+        "monthsOutpaced": 3,
+        "monthsDidNotDecline": 2,
+        "monthsOpposite": 10,
+        "potentialLoss": "$8,094.61"
+      },
+      {
+        "category": "610100 Supplies-Medical",
+        "monthsOutpaced": 5,
+        "monthsDidNotDecline": 4,
+        "monthsOpposite": 6,
+        "potentialLoss": "$16,757.54"
+      },
+      {
+        "category": "610200 Supplies-Uniforms",
+        "monthsOutpaced": 6,
+        "monthsDidNotDecline": 4,
+        "monthsOpposite": 3,
+        "potentialLoss": "$832.33"
+      },
+      {
+        "category": "610400 Rent -Office",
+        "monthsOutpaced": 8,
+        "monthsDidNotDecline": 8,
+        "monthsOpposite": 3,
+        "potentialLoss": "$40,526.23"
+      },
+      {
+        "category": "610500 Utilities-Gas & Electric",
+        "monthsOutpaced": 8,
+        "monthsDidNotDecline": 6,
+        "monthsOpposite": 9,
+        "potentialLoss": "$684.32"
+      },
+      {
+        "category": "610600 Utilities-Other",
+        "monthsOutpaced": 6,
+        "monthsDidNotDecline": 3,
+        "monthsOpposite": 7,
+        "potentialLoss": "$1,765.50"
+      },
+      {
+        "category": "610700 Telephone Expense",
+        "monthsOutpaced": 9,
+        "monthsDidNotDecline": 6,
+        "monthsOpposite": 11,
+        "potentialLoss": "$804.88"
+      },
+      {
+        "category": "610750 Internet Hosting & Connectivity",
+        "monthsOutpaced": 8,
+        "monthsDidNotDecline": 7,
+        "monthsOpposite": 1,
+        "potentialLoss": "$86.83"
+      },
+      {
+        "category": "610800 Repairs and Maintenance-Office",
+        "monthsOutpaced": 7,
+        "monthsDidNotDecline": 5,
+        "monthsOpposite": 7,
+        "potentialLoss": "$6,675.82"
+      },
+      {
+        "category": "610801 Security Expense",
+        "monthsOutpaced": 8,
+        "monthsDidNotDecline": 8,
+        "monthsOpposite": 0,
+        "potentialLoss": "$20.56"
+      },
+      {
+        "category": "610810 Cleaning office",
+        "monthsOutpaced": 4,
+        "monthsDidNotDecline": 2,
+        "monthsOpposite": 1,
+        "potentialLoss": "$3,398.31"
+      },
+      {
+        "category": "610900 Office Supplies",
+        "monthsOutpaced": 7,
+        "monthsDidNotDecline": 5,
+        "monthsOpposite": 7,
+        "potentialLoss": "$5,270.88"
+      },
+      {
+        "category": "611000 Computer Supplies",
+        "monthsOutpaced": 6,
+        "monthsDidNotDecline": 5,
+        "monthsOpposite": 1,
+        "potentialLoss": "$222.51"
+      },
+      {
+        "category": "611200 Postage & Delivery",
+        "monthsOutpaced": 0,
+        "monthsDidNotDecline": 0,
+        "monthsOpposite": 0,
+        "potentialLoss": "$252.33"
+      },
+      {
+        "category": "611300 Dues & Subscriptions",
+        "monthsOutpaced": 6,
+        "monthsDidNotDecline": 3,
+        "monthsOpposite": 2,
+        "potentialLoss": "$1,296.29"
+      },
+      {
+        "category": "612000 Professional Fees",
+        "monthsOutpaced": 6,
+        "monthsDidNotDecline": 5,
+        "monthsOpposite": 11,
+        "potentialLoss": "$6,975.95"
+      }
+    ],
+    "summary": {
+      "categories3Plus": [
+        "510000 Management Fees",
+        "600100 Payroll Expense",
+        "600700 Employee Screening",
+        "610100 Supplies-Medical",
+        "610200 Supplies-Uniforms",
+        "610400 Rent -Office",
+        "610500 Utilities-Gas & Electric",
+        "610600 Utilities-Other",
+        "610700 Telephone Expense",
+        "610750 Internet Hosting & Connectivity",
+        "610800 Repairs and Maintenance-Office",
+        "610801 Security Expense",
+        "610810 Cleaning office",
+        "610900 Office Supplies",
+        "611000 Computer Supplies",
+        "611300 Dues & Subscriptions",
+        "612000 Professional Fees"
+      ],
+      "total3Plus": 17
+    }
+  },
+
+  "keyMetrics": {
+    "totalRevenue": {
+      "value": 993263,
+      "formatted": "$993,263",
+      "type": "currency"
+    },
+    "totalExpenses": {
+      "value": 788324,
+      "formatted": "$788,324",
+      "type": "currency"
+    },
+    "profitPerVisit": {
+      "value": 26,
+      "formatted": "$26",
+      "type": "currency"
+    },
+    "profitMargin": {
+      "value": 10,
+      "formatted": "10%",
+      "type": "percentage"
+    }
+  },
+
+  "revenuePerformanceAnalysis": {
+    "weeklyPerformance": {
+      "totalWeeks": 52,
+      "underperformingWeeks": [
+        {"week": 12, "year": "2025", "diagnostic": "Under Performed", "missedRevenue": "$2,450", "revenueVariancePct": "-8.2%"},
+        {"week": 18, "year": "2025", "diagnostic": "Under Performed", "missedRevenue": "$1,890", "revenueVariancePct": "-5.1%"},
+        {"week": 23, "year": "2025", "diagnostic": "Under Performed", "missedRevenue": "$3,200", "revenueVariancePct": "-12.3%"}
+      ],
+      "overperformingWeeks": [
+        {"week": 15, "year": "2025", "diagnostic": "Over Performed", "extraRevenue": "$4,100", "revenueVariancePct": "+11.7%"},
+        {"week": 28, "year": "2025", "diagnostic": "Over Performed", "extraRevenue": "$2,800", "revenueVariancePct": "+9.4%"}
+      ]
+    },
+    "volumeAnalysis": {
+      "weeklyVolumeGaps": [
+        {"week": 12, "year": "2025", "actualVisits": 142, "expectedVisits": 156, "volumeGap": -14},
+        {"week": 18, "year": "2025", "actualVisits": 139, "expectedVisits": 151, "volumeGap": -12},
+        {"week": 23, "year": "2025", "actualVisits": 134, "expectedVisits": 149, "volumeGap": -15}
+      ],
+      "averageWeeklyVisits": 145,
+      "benchmarkWeeklyVisits": 152
+    },
+    "clinicalMetrics": {
+      "labsPerVisit": {
+        "current": 2.3,
+        "benchmark": 2.1,
+        "variance": "+9.5%",
+        "trend": "improving"
+      },
+      "proceduresPerVisit": {
+        "current": 1.7,
+        "benchmark": 1.5,
+        "variance": "+13.3%",
+        "trend": "improving"
+      },
+      "avgChargeEMWeight": {
+        "current": 3.2,
+        "benchmark": 3.0,
+        "variance": "+6.7%",
+        "trend": "stable"
+      },
+      "cptCount": {
+        "current": 12,
+        "benchmark": 10,
+        "variance": "+20.0%",
+        "trend": "expanding"
+      }
+    },
+    "financialMetrics": {
+      "collectionRate": {
+        "current": "87%",
+        "benchmark": "85%",
+        "variance": "+2.4%",
+        "trend": "improving"
+      },
+      "denialPercent": {
+        "current": "8%",
+        "benchmark": "10%",
+        "variance": "-20.0%",
+        "trend": "improving"
+      },
+      "nrvGapDollar": {
+        "current": "$8,450",
+        "benchmark": "$12,000",
+        "variance": "-29.6%",
+        "trend": "improving"
+      },
+      "rateVariance": {
+        "current": "+$3.20",
+        "benchmark": "$0.00",
+        "variance": "above expected",
+        "trend": "performing above rate"
+      }
+    },
+    "operationalInsights": {
+      "whatWentWell": [
+        "BCBS – Existing E/M Code Visit Count increased from avg 45.2 to 52.3",
+        "MEDICARE – New E/M Code Payment per Visit increased from avg $118.50 to $132.40",
+        "AETNA – Existing E/M Code Labs per Visit increased from avg 2.1 to 2.8",
+        "UNITED HEALTHCARE – New E/M Code Procedure per Visit increased from avg 1.4 to 1.9",
+        "CIGNA – Existing E/M Code Charge Amount increased from avg $285.60 to $312.80"
+      ],
+      "whatCanBeImproved": [
+        "SELF PAY – Existing E/M Code Visit Count decreased from avg 15.3 to 12.1",
+        "MEDICAID – New E/M Code Payment per Visit decreased from avg $89.20 to $76.50",
+        "TRICARE – Existing E/M Code Labs per Visit decreased from avg 1.8 to 1.3",
+        "HUMANA – New E/M Code Procedure per Visit decreased from avg 1.6 to 1.2"
+      ]
+    },
+    "revenueCycleInsights": {
+      "whatWentWell": [
+        "BCBS – Existing E/M Code Collection Rate increased from avg 0.85 to 0.91",
+        "MEDICARE – New E/M Code Zero Balance Collection Rate increased from avg 0.78 to 0.84",
+        "AETNA – Existing E/M Code NRV Zero Balance increased from avg $95.30 to $108.20",
+        "UNITED HEALTHCARE – New E/M Code Payment Amount increased from avg $142.60 to $156.80"
+      ],
+      "whatCanBeImproved": [
+        "SELF PAY – Existing E/M Code Collection Rate decreased from avg 0.45 to 0.38",
+        "MEDICAID – New E/M Code Zero Balance Collection Rate decreased from avg 0.72 to 0.65",
+        "TRICARE – Existing E/M Code Denial % increased from avg 0.08 to 0.12",
+        "HUMANA – New E/M Code NRV Gap ($) increased from avg $12.50 to $18.90"
+      ]
+    }
+  },
+
+  "immediateActions": {
+    "operational": [
+      "Address declining SELF PAY visit count - implement patient retention strategies",
+      "Improve MEDICAID payment per visit rates through better coding documentation",
+      "Increase TRICARE labs per visit to historical averages through protocol review",
+      "Enhance HUMANA procedure per visit through comprehensive care planning",
+      "Focus on visit count growth across all major payers"
+    ],
+    "revenueCycle": [
+      "Improve SELF PAY collection rate through enhanced payment plans and follow-up",
+      "Address MEDICAID zero balance collection rate decline with process improvements",
+      "Reduce TRICARE denial rates through pre-authorization and documentation review",
+      "Close HUMANA NRV gaps through pricing strategy and contract negotiation",
+      "Leverage strong BCBS and MEDICARE performance as best practice models"
+    ]
+  },
+
+  "insights": {
+    "whatWentWell": [
+      "Revenue grew 44% year-over-year to $993,263",
+      "Total expenses decreased 12% despite revenue growth",
+      "Strong performance with BCBS and MEDICARE payers showing improved metrics",
+      "Collection rates improved for major commercial payers",
+      "Procedure and lab utilization increased for primary payers"
+    ],
+    "marginRiskCategories": [
+      "Utilities-Other: 6 months outpaced growth, $1,765 potential loss",
+      "Cleaning office: 4 months outpaced growth, $3,398 potential loss",
+      "Computer Supplies: 6 months outpaced growth, $223 potential loss"
+    ]
+  },
+
+  "aggregatedWeeklyMetrics": {
+    "benchmarkAnalysis": {
+      "description": "Aggregated weekly payer/E/M-level analysis with benchmark payment comparisons",
+      "materialityThreshold": "3%",
+      "keyMetrics": [
+        "Expected_Payment",
+        "benchmark_payment",
+        "Revenue_Variance",
+        "Revenue_Variance_Pct",
+        "Volume_Gap",
+        "Rate_Variance",
+        "Actual_Rate_per_Visit",
+        "Expected_Amount_85_EM_invoice_level"
+      ]
+    },
+    "benchmarkPaymentAnalysis": {
+      "expectedVsBenchmarkVariance": {
+        "description": "Compares expected payments (85% E/M rate) against historical benchmark payments",
+        "metrics": [
+          "Expected_vs_Benchmark_Payment_Variance_$",
+          "Expected_vs_Benchmark_Payment_Variance_%"
+        ]
+      },
+      "weightingDiagnostics": {
+        "description": "Analyzes weighted vs unweighted benchmark payment calculations",
+        "materialityFlag": "Benchmark_Payment_Weighting_Material_Flag",
+        "thresholdDescription": "Flags when weighting difference exceeds 3%",
+        "metrics": [
+          "benchmark_payment_weighted",
+          "benchmark_payment_unweighted",
+          "Benchmark_Payment_Weighting_Diff_$",
+          "Benchmark_Payment_Weighting_Diff_%"
+        ]
+      }
+    },
+    "aggregatedDimensions": {
+      "groupingLevels": [
+        "Year",
+        "Week",
+        "Payer",
+        "Group_EM",
+        "Group_EM2"
+      ],
+      "benchmarkKeys": "Consolidated list of Benchmark_Keys for each aggregated group"
+    },
+    "derivedMetrics": {
+      "visitMetrics": {
+        "Visit_Count": "Sum of unique visits across benchmark keys",
+        "Benchmark_Invoice_Count": "Unique invoice count for historical comparison",
+        "Volume_Gap": "Difference between actual and benchmark visit counts"
+      },
+      "financialMetrics": {
+        "Payment_Amount": "Total payment amount for the period",
+        "Expected_Payment": "Expected payment based on 85% E/M rate",
+        "benchmark_payment": "Historical benchmark payment amount",
+        "Revenue_Variance": "Actual vs expected payment difference",
+        "Rate_Variance": "Actual vs expected rate per visit difference"
+      },
+      "clinicalMetrics": [
+        "Avg_Charge_EM_Weight",
+        "Labs_per_Visit",
+        "Procedure_per_Visit",
+        "Radiology_Count"
+      ],
+      "collectionMetrics": [
+        "Zero_Balance_Collection_Rate",
+        "Collection_Rate",
+        "Denial_Percent",
+        "NRV_Gap_Dollar",
+        "NRV_Gap_Percent"
+      ]
+    }
+  },
+
+  "granularWeeklyMetrics": {
+    "benchmarkKeyAnalysis": {
+      "description": "Granular weekly analysis at the individual Benchmark_Key (CPT code combination) level",
+      "granularDimensions": [
+        "Year",
+        "Week",
+        "Payer",
+        "Group_EM",
+        "Group_EM2",
+        "Benchmark_Key"
+      ],
+      "cptCodeTracking": {
+        "description": "CPT count extracted from Benchmark_Key string",
+        "purpose": "Tracks service complexity and diversity at granular level"
+      }
+    },
+    "historicalBenchmarks": {
+      "expectedRatePerKey": {
+        "description": "Expected 85% E/M rate calculated per individual Benchmark_Key",
+        "metric": "Expected_Amount_85_EM_invoice_level"
+      },
+      "historicalVisitCount": {
+        "description": "Mean weekly visits per Benchmark_Key for volume comparison",
+        "metric": "Benchmark_Invoice_Count"
+      },
+      "historicalPaymentRate": {
+        "description": "Historical payment rate per visit calculated per Benchmark_Key",
+        "metric": "Benchmark_Payment_Rate_per_Visit"
+      }
+    },
+    "granularDerivedMetrics": {
+      "paymentCalculations": [
+        "Expected_Payment",
+        "Benchmark_Payment",
+        "Actual_Rate_per_Visit",
+        "Revenue_Variance",
+        "Revenue_Variance_Pct"
+      ],
+      "volumeAnalysis": [
+        "Volume_Gap",
+        "Visit_Count",
+        "Group_Size"
+      ],
+      "rateAnalysis": [
+        "Rate_Variance",
+        "Actual_Rate_per_Visit",
+        "Expected_Amount_85_EM_invoice_level"
+      ]
+    },
+    "groupLevelDiagnostics": {
+      "description": "Group-level benchmark diagnostics attached to each granular row",
+      "materialityThreshold": "3%",
+      "weightingAnalysis": {
+        "weightedVsUnweighted": [
+          "Group_benchmark_payment_weighted",
+          "Group_benchmark_payment_unweighted",
+          "Group_Benchmark_Payment_Diff_$",
+          "Group_Benchmark_Payment_Diff_%"
+        ],
+        "materialityFlag": "Group_Benchmark_Payment_Material_Flag",
+        "purpose": "Identifies when volume weighting creates significant differences in benchmark calculations"
+      },
+      "groupMetrics": [
+        "Group_total_visits",
+        "Group_mean_rate_unweighted",
+        "Group_Benchmark_Invoice_Count"
+      ]
+    },
+    "clinicalDetailTracking": {
+      "visitMetrics": [
+        "Visit_Count",
+        "Group_Size",
+        "Labs_per_Visit",
+        "Procedure_per_Visit",
+        "Radiology_Count",
+        "Avg_Charge_EM_Weight"
+      ],
+      "financialMetrics": [
+        "Charge_Amount",
+        "Payment_Amount",
+        "Zero_Balance_Collection_Rate",
+        "Collection_Rate",
+        "Denial_Percent"
+      ],
+      "revenueMetrics": [
+        "NRV_Zero_Balance",
+        "NRV_Gap_Dollar",
+        "NRV_Gap_Percent",
+        "Charge_Billed_Balance",
+        "Open_Invoice_Count"
+      ]
+    }
+  }
+}
