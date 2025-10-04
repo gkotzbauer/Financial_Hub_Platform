@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RMT Revenue Performance Dashboard</title>
-    <script src="auth-v2.js"></script>
     <style>
         body { 
             margin: 0; 
@@ -49,22 +48,14 @@
         <div class="spinner"></div>
         <div class="loading">
             <p>Loading Revenue Performance Dashboard...</p>
-            <p>Please wait while we verify your authentication and load the dashboard.</p>
+            <p>Please wait while we load the dashboard.</p>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const authManager = new AuthManager(false); // Don't auto-redirect
-            authManager.verifyToken().then(isAuthenticated => {
-                if (!isAuthenticated) {
-                    window.location.href = '/login.html';
-                } else {
-                    // Token is valid, redirect to revenue analysis
-                    const token = localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
-                    window.location.href = `${window.location.origin}/revenue-analysis/?token=${encodeURIComponent(token)}`;
-                }
-            });
+            // Directly redirect to revenue analysis without authentication
+            window.location.href = `${window.location.origin}/revenue-analysis/`;
         });
     </script>
 </body>

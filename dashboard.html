@@ -198,11 +198,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="user-info" id="userInfo">
-            <span id="welcomeText">Welcome, User!</span>
-            <button class="logout-btn" onclick="logout()">Logout</button>
-        </div>
-
         <div class="header">
             <h1>🚀 RMT Financial Hub</h1>
             <p>Comprehensive financial analytics and performance insights</p>
@@ -241,39 +236,13 @@
         </div>
     </div>
 
-    <script src="auth-v2.js"></script>
     <script>
-        // Wait for auth-v2.js to initialize DashboardAuth
-        document.addEventListener('DOMContentLoaded', function() {
-            // The DashboardAuth from auth-v2.js will handle authentication
-            // Just update the welcome text when ready
-            setTimeout(() => {
-                if (window.dashboardAuth && window.dashboardAuth.auth) {
-                    const userInfo = window.dashboardAuth.auth.getUserInfo();
-                    if (userInfo) {
-                        document.getElementById('welcomeText').textContent = `Welcome, ${userInfo.username}! (${userInfo.role})`;
-                    }
-                }
-            }, 100);
-        });
-
         function goToExpenseDashboard() {
-            window.location.href = '/index.html';  // Changed to index.html which is the actual margin dashboard
+            window.location.href = '/index.html';  // Goes to the margin dashboard
         }
 
         function goToRevenueDashboard() {
             window.location.href = '/revenue-dashboard.html';
-        }
-
-        function logout() {
-            if (window.dashboardAuth && window.dashboardAuth.auth) {
-                window.dashboardAuth.auth.logout();
-            } else {
-                // Fallback
-                localStorage.clear();
-                sessionStorage.clear();
-                window.location.href = '/login.html';
-            }
         }
     </script>
 </body>
