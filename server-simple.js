@@ -62,9 +62,9 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Serve dashboard.html for root (RMT Financial Hub)
+// Serve login.html for root (RMT Financial Hub)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dashboard.html'));
+    res.sendFile(path.join(__dirname, 'login.html'));
 });
 
 // Error handling middleware

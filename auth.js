@@ -405,36 +405,6 @@ class DashboardAuth {
                     </button>
                 </div>
             </div>
-            <div style="display: flex; gap: 15px; align-items: center; margin-top: 20px;">
-                <nav style="display: flex; gap: 15px; align-items: center;">
-                    <a href="/" style="
-                        background: linear-gradient(135deg, #667eea, #764ba2);
-                        color: white;
-                        text-decoration: none;
-                        padding: 10px 20px;
-                        border-radius: 8px;
-                        font-weight: 600;
-                        transition: all 0.3s ease;
-                        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-                    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.4)'" 
-                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(102, 126, 234, 0.3)'">
-                        📊 Margin Dashboard
-                    </a>
-                    <a href="/revenue-dashboard.html" style="
-                        background: linear-gradient(135deg, #48bb78, #38a169);
-                        color: white;
-                        text-decoration: none;
-                        padding: 10px 20px;
-                        border-radius: 8px;
-                        font-weight: 600;
-                        transition: all 0.3s ease;
-                        box-shadow: 0 2px 8px rgba(72, 187, 120, 0.3);
-                    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(72, 187, 120, 0.4)'" 
-                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(72, 187, 120, 0.3)'">
-                        💰 Revenue Analysis
-                    </a>
-                </nav>
-            </div>
         `;
         
         // Replace header content
