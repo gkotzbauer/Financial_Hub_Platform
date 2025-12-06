@@ -25,3 +25,16 @@ dist-ssr
 
 # Excel temporary files
 ~$*
+
+# Local-only artifacts (not needed in repo)
+backups/
+uploads/*
+!uploads/.gitkeep
+
+# Environment configuration
+.env
+*.env.local
+chat-agent/.env
+server/.env
+!.env.example
+!chat-agent/.env.example

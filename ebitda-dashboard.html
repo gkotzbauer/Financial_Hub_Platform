@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic Sale Price Predictor (EBITDA Model)</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .dashboard-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-header h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dashboard-header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 min-h-screen">
+
+    <div class="max-w-6xl mx-auto">
+        <!-- Dashboard Header (matching expense dashboard style) -->
+        <div class="dashboard-header">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1>🏥 Clinic Valuation Predictor (EBITDA Model)</h1>
+                    <p>Estimate your clinic's Enterprise Value and Sale Price based on Normalized EBITDA</p>
+                </div>
+                <a href="/" class="back-button">← Back to Hub</a>
+            </div>
+        </div>
+
+        <!-- Main Grid Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- COLUMN 1: EBITDA CALCULATION (INPUT) -->
+            <div class="lg:col-span-2 card bg-white p-6 rounded-xl">
+                <h2 class="text-xl font-bold text-blue-700 mb-4 border-b pb-2">1. Calculate Normalized EBITDA</h2>
+                <p class="text-sm text-gray-500 mb-4">Enter your last 12 months (LTM) financial data. Normalization adjustments remove non-core expenses to show the true operating profit for a new owner.</p>
+
+                <!-- Financial Inputs Group -->
+                <div id="financial-inputs">
+                    <!-- Standard Line Items -->
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <label for="netIncome" class="text-gray-700 font-medium">Net Income (Starting Point)</label>
+                            <input type="number" id="netIncome" value="300000" oninput="updateValuation()" placeholder="e.g., 300000" class="w-1/3 p-2 border border-gray-300 rounded-lg text-right focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Interest, Taxes, Depreciation, Amortization (EBITDA Addbacks) -->
+                        <div class="pt-2 border-t mt-4">
+                            <h3 class="text-md font-semibold text-gray-700 mb-2">Standard Add-Backs (I, T, D, & A)</h3>
+                            <div class="flex flex-wrap gap-4">
+                                <div class="w-full sm:w-1/2">
+                                    <label for="interest" class="block text-sm text-gray-500">Interest Expense (+)</label>
+                                    <input type="number" id="interest" value="15000" oninput="updateValuation()" class="w-full p-2 border border-gray-300 rounded-lg text-right">
+                                </div>
+                                <div class="w-full sm:w-1/2">
+                                    <label for="taxes" class="block text-sm text-gray-500">Taxes (Income Tax) (+)</label>
+                                    <input type="number" id="taxes" value="50000" oninput="updateValuation()" class="w-full p-2 border border-gray-300 rounded-lg text-right">
+                                </div>
+                                <div class="w-full sm:w-1/2">
+                                    <label for="depreciation" class="block text-sm text-gray-500">Depreciation (+)</label>
+                                    <input type="number" id="depreciation" value="20000" oninput="updateValuation()" class="w-full p-2 border border-gray-300 rounded-lg text-right">
+                                </div>
+                                <div class="w-full sm:w-1/2">
+                                    <label for="amortization" class="block text-sm text-gray-500">Amortization (+)</label>
+                                    <input type="number" id="amortization" value="5000" oninput="updateValuation()" class="w-full p-2 border border-gray-300 rounded-lg text-right">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Normalization Adjustments -->
+                        <div class="pt-2 border-t mt-4">
+                            <h3 class="text-md font-semibold text-gray-700 mb-2">Normalization Add-Backs (Owner/Non-Recurring)</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <label for="ownerComp" class="text-sm text-gray-500">Excess Owner Compensation/Benefits (+)</label>
+                                    <input type="number" id="ownerComp" value="40000" oninput="updateValuation()" placeholder="e.g., Personal Car Lease, Excess Salary" class="w-1/3 p-2 border border-gray-300 rounded-lg text-right">
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <label for="personalExpenses" class="text-sm text-gray-500">Personal/Discretionary Expenses (+)</label>
+                                    <input type="number" id="personalExpenses" value="5000" oninput="updateValuation()" placeholder="e.g., Travel, Club Fees" class="w-1/3 p-2 border border-gray-300 rounded-lg text-right">
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <label for="nonRecurring" class="text-sm text-gray-500">Non-Recurring Costs (One-Time) (+)</label>
+                                    <input type="number" id="nonRecurring" value="10000" oninput="updateValuation()" placeholder="e.g., Legal Settlement, Server Upgrade" class="w-1/3 p-2 border border-gray-300 rounded-lg text-right">
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <label for="nonCoreIncome" class="text-sm text-gray-500">Non-Core/One-Time Income (-)</label>
+                                    <input type="number" id="nonCoreIncome" value="0" oninput="updateValuation()" placeholder="e.g., Asset Sale Gain" class="w-1/3 p-2 border border-gray-300 rounded-lg text-right">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Normalized EBITDA Output -->
+                <div class="mt-8 pt-4 border-t-4 border-blue-500 bg-blue-50 p-4 rounded-xl card">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-extrabold text-blue-900">Normalized EBITDA</span>
+                        <span id="normalizedEBITDA" class="text-3xl font-extrabold text-blue-900">$445,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMN 2: VALUATION & OUTPUT -->
+            <div class="lg:col-span-1 space-y-6">
+
+                <!-- Valuation Multiple Card -->
+                <div class="card bg-white p-6 rounded-xl">
+                    <h2 class="text-xl font-bold text-green-700 mb-4 border-b pb-2">2. Valuation Inputs</h2>
+
+                    <p class="text-sm text-gray-500 mb-4">A multiple is applied to your Normalized EBITDA. The range for medical practices is typically **4.0x to 8.0x**, depending on specialty, size, and growth.</p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <label for="multiple" class="text-gray-700 font-medium">EBITDA Multiple (x)</label>
+                            <input type="number" id="multiple" value="6.0" oninput="updateValuation()" step="0.1" class="w-1/3 p-2 border border-gray-300 rounded-lg text-right focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div class="text-xs text-center text-gray-500 p-2 bg-gray-50 rounded-lg">
+                            **Typical Multiples (Source: Market Data):**
+                            <ul class="list-disc list-inside mt-1 space-y-0.5">
+                                <li>**Primary Care:** 4.0x - 7.0x</li>
+                                <li>**Specialty:** 6.0x - 12.0x+ (Dermatology, Behavioral Health, etc.)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Debt & Cash Card -->
+                <div class="card bg-white p-6 rounded-xl">
+                    <h2 class="text-xl font-bold text-purple-700 mb-4 border-b pb-2">3. Equity Value Adjustments</h2>
+                    <p class="text-sm text-gray-500 mb-4">Enterprise Value is the business price. To get the **Equity Value** (what the owner pockets), adjust for debt and cash.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <label for="totalDebt" class="text-gray-700 font-medium">Total Long-Term Debt (-)</label>
+                            <input type="number" id="totalDebt" value="250000" oninput="updateValuation()" class="w-1/2 p-2 border border-gray-300 rounded-lg text-right focus:ring-purple-500 focus:border-purple-500">
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <label for="cash" class="text-gray-700 font-medium">Excess Cash on Balance Sheet (+)</label>
+                            <input type="number" id="cash" value="100000" oninput="updateValuation()" class="w-1/2 p-2 border border-gray-300 rounded-lg text-right focus:ring-purple-500 focus:border-purple-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Output Card -->
+                <div class="card bg-gradient-to-r from-blue-600 to-indigo-700 p-6 rounded-xl text-white">
+                    <h2 class="text-2xl font-bold mb-4">4. Estimated Sale Price</h2>
+
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center border-b border-indigo-400 pb-2">
+                            <span class="text-lg font-medium">Enterprise Value (EV)</span>
+                            <span id="enterpriseValue" class="text-3xl font-bold">$2,670,000</span>
+                        </div>
+                        <p class="text-sm italic text-indigo-200">
+                            (This is the value of the operating business: Normalized EBITDA x Multiple)
+                        </p>
+
+                        <div class="flex justify-between items-center pt-3">
+                            <span class="text-lg font-medium">Estimated Equity Value</span>
+                            <span id="equityValue" class="text-3xl font-extrabold text-yellow-300">$2,520,000</span>
+                        </div>
+                        <p class="text-sm italic text-indigo-200">
+                            (This is the cash to the owner: EV - Debt + Cash)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="mt-8 text-center text-xs text-gray-100">
+            Disclaimer: This model provides an estimation only and is not financial advice. Professional valuation uses extensive due diligence.
+        </footer>
+    </div>
+
+    <script>
+        // Helper function to safely parse input values, defaulting to 0 for empty or invalid input
+        function getValue(id) {
+            const element = document.getElementById(id);
+            // Use 0 if element is null, or if value is empty/not a number (after trimming)
+            const value = element ? parseFloat(element.value.trim() || 0) : 0;
+            return isNaN(value) ? 0 : value;
+        }
+
+        // Helper function to format currency
+        function formatCurrency(amount) {
+            return '$' + new Intl.NumberFormat('en-US', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+
+        function updateValuation() {
+            // --- 1. Calculate Normalized EBITDA ---
+
+            // Standard EBITDA Calculation
+            const netIncome = getValue('netIncome');
+            const interest = getValue('interest');
+            const taxes = getValue('taxes');
+            const depreciation = getValue('depreciation');
+            const amortization = getValue('amortization');
+
+            // Normalization Adjustments (Add-Backs)
+            const ownerComp = getValue('ownerComp');
+            const personalExpenses = getValue('personalExpenses');
+            const nonRecurring = getValue('nonRecurring');
+
+            // Non-Core Income (Deduction)
+            const nonCoreIncome = getValue('nonCoreIncome');
+
+            const normalizedEBITDA =
+                netIncome +
+                interest +
+                taxes +
+                depreciation +
+                amortization +
+                ownerComp +
+                personalExpenses +
+                nonRecurring -
+                nonCoreIncome;
+
+            document.getElementById('normalizedEBITDA').textContent = formatCurrency(normalizedEBITDA);
+
+            // --- 2. Calculate Enterprise Value (Sale Price) ---
+
+            const multiple = getValue('multiple');
+            // Enterprise Value = Normalized EBITDA x Multiple
+            const enterpriseValue = normalizedEBITDA * multiple;
+
+            document.getElementById('enterpriseValue').textContent = formatCurrency(enterpriseValue);
+
+            // --- 3. Calculate Equity Value (Cash to Seller) ---
+
+            const totalDebt = getValue('totalDebt');
+            const cash = getValue('cash');
+
+            // Equity Value = Enterprise Value - Total Debt + Excess Cash
+            const equityValue = enterpriseValue - totalDebt + cash;
+
+            document.getElementById('equityValue').textContent = formatCurrency(equityValue);
+        }
+
+        // Initialize the calculation on load
+        window.onload = updateValuation;
+    </script>
+</body>
+</html>

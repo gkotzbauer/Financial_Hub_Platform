@@ -122,6 +122,10 @@
             background: linear-gradient(135deg, #48bb78, #38a169);
         }
 
+        .dashboard-card.ebitda::before {
+            background: linear-gradient(135deg, #9f7aea, #805ad5);
+        }
+
         .dashboard-card-icon {
             font-size: 4rem;
             margin-bottom: 20px;
@@ -236,6 +240,25 @@
                 <button onclick="goToRevenueDashboard()" style="background: linear-gradient(135deg, #48bb78, #38a169); color: white; border: none; padding: 12px 24px; border-radius: 25px; cursor: pointer; font-size: 1rem; font-weight: 600; margin-top: 20px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(72, 187, 120, 0.4)'" onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 4px 12px rgba(72, 187, 120, 0.3)'">Revenue Performance</button>
             </div>
         </div>
+
+        <!-- Third Section: EBITDA Dashboard -->
+        <div style="display: flex; justify-content: center; margin-top: 40px;">
+            <div class="dashboard-card ebitda" onclick="goToEbitdaDashboard()" style="max-width: 500px;">
+                <span class="dashboard-card-icon">🏥</span>
+                <h2>EBITDA Dashboard</h2>
+                <p>Clinic Sale Price Predictor with comprehensive EBITDA-based valuation modeling</p>
+                <div class="features">
+                    <ul>
+                        <li>Interactive clinic valuation calculator</li>
+                        <li>EBITDA multiple sensitivity analysis</li>
+                        <li>Market adjustment factors and scenarios</li>
+                        <li>Per-provider value breakdowns</li>
+                        <li>Industry benchmark comparisons</li>
+                    </ul>
+                </div>
+                <button onclick="goToEbitdaDashboard()" style="background: linear-gradient(135deg, #9f7aea, #805ad5); color: white; border: none; padding: 12px 24px; border-radius: 25px; cursor: pointer; font-size: 1rem; font-weight: 600; margin-top: 20px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(159, 122, 234, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(159, 122, 234, 0.4)'" onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 4px 12px rgba(159, 122, 234, 0.3)'">Clinic Valuation</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -245,6 +268,10 @@
 
         function goToRevenueDashboard() {
             window.location.href = 'revenue-dashboard.html';
+        }
+
+        function goToEbitdaDashboard() {
+            window.location.href = 'ebitda-dashboard.html';
         }
     </script>
 </body>
