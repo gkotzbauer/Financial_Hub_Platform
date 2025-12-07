@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: revenue-performance-dashboard
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    routes:
+      - type: rewrite
+        source: /data/*
+        destination: /data/*
+      - type: rewrite
+        source: /api/*
+        destination: /api/*
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /data/*
+        name: Access-Control-Allow-Origin
+        value: "*"
+      - path: /data/*
+        name: Access-Control-Allow-Methods
+        value: "GET, POST, PUT, DELETE, OPTIONS"
+      - path: /data/*
+        name: Access-Control-Allow-Headers
+        value: "Content-Type"
+      - path: /data/*
+        name: Cache-Control
+        value: "no-cache, no-store, must-revalidate" 

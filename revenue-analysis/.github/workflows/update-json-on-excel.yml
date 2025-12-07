@@ -1,0 +1,49 @@
+name: Update JSON from Excel
+
+on:
+  push:
+    paths:
+      - 'data/revenue-data.xlsx'
+      - 'scripts/excel-to-json.js'
+      - '.github/workflows/update-json-on-excel.yml'
+      - 'package.json'
+  pull_request:
+    paths:
+      - 'data/revenue-data.xlsx'
+      - 'scripts/excel-to-json.js'
+      - '.github/workflows/update-json-on-excel.yml'
+      - 'package.json'
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Update JSON from Excel
+        run: npm run update-json
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add data/revenue-data.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'ci: update revenue-data.json from revenue-data.xlsx [auto]'
+            git push
+          else
+            echo 'No changes to commit.'
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
