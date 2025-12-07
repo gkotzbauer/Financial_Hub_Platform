@@ -22,6 +22,65 @@
             color: #333;
         }
 
+        .unified-nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            margin-bottom: 20px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-brand a {
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 10px;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #4a5568;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
         .dashboard-header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -79,6 +138,32 @@
     </style>
 </head>
 <body class="p-4 md:p-8 min-h-screen">
+
+    <nav class="unified-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/index.html">RMT Financial Hub</a>
+            </div>
+            <div class="nav-menu">
+                <a href="/index.html" class="nav-item">
+                    <span>🏠</span>
+                    <span>Home</span>
+                </a>
+                <a href="/expense-dashboard.html" class="nav-item">
+                    <span>💰</span>
+                    <span>Expenses</span>
+                </a>
+                <a href="/revenue-dashboard.html" class="nav-item">
+                    <span>📊</span>
+                    <span>Revenue</span>
+                </a>
+                <a href="/ebitda-dashboard.html" class="nav-item active">
+                    <span>🏥</span>
+                    <span>EBITDA</span>
+                </a>
+            </div>
+        </div>
+    </nav>
 
     <div class="max-w-6xl mx-auto">
         <!-- Dashboard Header (matching expense dashboard style) -->
