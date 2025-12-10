@@ -23,64 +23,7 @@
             color: #333;
         }
 
-        .unified-nav {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            margin-bottom: 20px;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        .nav-brand a {
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 10px;
-            flex: 1;
-            justify-content: center;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #4a5568;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .nav-item:hover {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            transform: translateY(-2px);
-        }
-
-        .nav-item.active {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
+        /* Navigation styling handled via inline styles to match other dashboards */
 
         .dashboard-header {
             background: rgba(255, 255, 255, 0.95);
@@ -138,27 +81,29 @@
         }
     </style>
 </head>
-<body class="px-2 md:px-6 py-6 min-h-screen">
+<body class="px-2 md:px-6 pb-6 min-h-screen">
 
-    <nav class="unified-nav">
-        <div class="nav-container">
+    <nav class="unified-nav" style="background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); position: sticky; top: 0; z-index: 1000; margin-bottom: 20px;">
+        <div class="nav-container" style="max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; height: 70px;">
             <div class="nav-brand">
-                <a href="/index.html">RMT Financial Hub</a>
+                <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">RMT Financial Hub</span>
+                </a>
             </div>
-            <div class="nav-menu">
-                <a href="/index.html" class="nav-item">
+            <div class="nav-menu" style="display: flex; gap: 10px; flex: 1; justify-content: center;">
+                <a href="index.html" style="display: flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 10px; text-decoration: none; color: #4a5568; transition: all 0.3s ease; font-weight: 500;">
                     <span>🏠</span>
                     <span>Home</span>
                 </a>
-                <a href="/expense-dashboard.html" class="nav-item">
+                <a href="expense-dashboard.html" style="display: flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 10px; text-decoration: none; color: #4a5568; transition: all 0.3s ease; font-weight: 500;">
                     <span>💰</span>
                     <span>Expenses</span>
                 </a>
-                <a href="/revenue-dashboard.html" class="nav-item">
+                <a href="revenue-dashboard.html" style="display: flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 10px; text-decoration: none; color: #4a5568; transition: all 0.3s ease; font-weight: 500;">
                     <span>📊</span>
                     <span>Revenue</span>
                 </a>
-                <a href="/ebitda-dashboard.html" class="nav-item active">
+                <a href="ebitda-dashboard.html" style="display: flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 10px; text-decoration: none; background: linear-gradient(135deg, #667eea, #764ba2); color: white; transition: all 0.3s ease; font-weight: 500;">
                     <span>🏥</span>
                     <span>EBITDA</span>
                 </a>
